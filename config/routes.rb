@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'questions#index'
+  get '/about', to: 'about#index'
   devise_for :users
 
   resources :users

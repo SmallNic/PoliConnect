@@ -1,5 +1,7 @@
 <h1>PoliConnect</h1>
-<h2> Home Page </h2>
+
+<h2>About Page</h2>
+
 <ul>
   <li><%= link_to "Home", '/' %></li>
   <li><%= link_to "About", '/about' %></li>
@@ -10,8 +12,3 @@
     <li><%= link_to('Sign Out', destroy_user_session_path, :method => :delete)  %></li>
   <% end %>
 </ul>
-
-<% @questions.each do |question| %>
-  <%= question.title %>
-  <%= question.body %>
-<% end %>
