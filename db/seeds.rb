@@ -8,38 +8,52 @@
 #
 categories = ["Law Maker", "Policy Maker"]
 
-
 #Fake users
-5.times do |i|
+counter = 0
+5.times do
+
+  if counter == 2
+    counter = 0
+  end
+
   email = Faker::Internet.email
-  category = categories.sample(1)
-  User.create(:category => category, :email => email)
+  category = categories.sample
+  newUser= User.create!(
+  category: category,
+  email: email,
+  password: "password",
+  password_confirmation: "password",
+  created_at: Time.zone.now)
+
+  counter += 1
 end
-#
-#
-#
-#
+
+
+
+
 #Fake Questions
-# 5.times do |i|
-#   title = Faker::Lorem.sentences(1)
-#   body  = Faker::Lorem.paragraph
-#   user_id = User.find[i].id
-# Question.create(:title => title, :body => body, :user_id => user_id)
-#
-# end
-# #
-# #
-# # #Fake Responses
-# # 5.times do |i|
-# #   body = Faker::Lorem.paragraph
-# #   user_id = user[i].id
-# #   question_id = question[i].id
-# #
-# # end
-# #
-# #
-# # #Fake Tag
-# # 5.times do |i|
-# #   name = Faker:Lorem.word
-# #   question_id = question[i].id
-# # end
+5.times do |i|
+  i = 1
+  title = Faker::Lorem.sentences(1)
+  body  = Faker::Lorem.paragraph
+  user_id = User.find(i)
+Question.create!(:title => title, :body => body, :user_id => user_id)
+end
+
+
+#Fake Responses
+5.times do |i|
+  i = 1
+  body = Faker::Lorem.paragraph
+  user_id = User.find(i).id
+  question_id = Question.find(i).id
+  Response.create!(body: body, user_id: user_id, question_id: question_id)
+end
+
+
+#Fake Tag
+5.times do |i|
+  name = Faker::Lorem.word
+  question_id = Question.find(1).id
+  Tag.create!(name: name, question_id: question_id)
+end
