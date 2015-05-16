@@ -1,5 +1,5 @@
 <h1>PoliConnect</h1>
-<h2> Home Page </h2>
+
 <ul>
   <li><%= link_to "Home", '/' %></li>
   <li><%= link_to "About", '/about' %></li>
@@ -11,7 +11,5 @@
   <% end %>
 </ul>
 
-<% @questions.each do |question| %>
-  <h3><%= link_to(question.title, question_path)%></h3>
-  <p><%= question.body %></p>
-<% end %>
+<h2><%= @question.title %></h2>
+<p><%= @question.body %></p>
