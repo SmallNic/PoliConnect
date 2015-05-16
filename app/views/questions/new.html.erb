@@ -2,6 +2,8 @@
     <h1>Your Information</h1>
     <%= form_for @question do |f| %>
 
+      <%= f.hidden_field :user_id, {value:current_user.id} %>
+
       <div class = "spacer">
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -9,7 +11,7 @@
 
       <div class = "spacer">
       <%= f.label :body %>
-      <%= f.text_field :body %>
+      <%= f.text_area :body, :size=>"52x6" %>
       </div>
 
       <%= f.submit %>
