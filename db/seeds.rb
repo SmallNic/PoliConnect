@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# category = ("Law Maker", "Policy Maker")
+#
+#
+# #Fake users
+# 5.times do |i|
+#
+#   Faker::Internet.email
+#   = category.sample(1)
+#
+# end
+#
+# #Fake Responses
+#
+#
+# 5.times do |i|
+#
+#   Faker::Internet.email
+#   = category.sample(1)
+#
+# end
