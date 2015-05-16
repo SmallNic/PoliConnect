@@ -12,6 +12,6 @@
 </ul>
 
 <% @questions.each do |question| %>
-  <%= question.title %>
-  <%= question.body %>
+  <h3><%= link_to(question.title, question_path)%></h3>
+  <p><%= question.body %></p>
 <% end %>
