@@ -1,0 +1,19 @@
+<div class = "forminfo">
+  <h1>Your Information</h1>
+  <%= form_for @response do |f| %>
+
+    <%= f.hidden_field :user_id, {value:current_user.id} %>
+
+    <div class = "spacer">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
+
+    <div class = "spacer">
+    <%= f.label :body %>
+    <%= f.text_area :body, :size=>"52x6" %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+</div>

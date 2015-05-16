@@ -13,3 +13,10 @@
     <% end %>
   </div>
 </div>
+
+<% @questions.each do |question| %>
+  <h3><%= link_to(question.title, question_path(question))%></h3>
+  <p><%= question.body %></p>
+<% end %>
+
+<%= link_to("Ask a Question", new_question_path) %>

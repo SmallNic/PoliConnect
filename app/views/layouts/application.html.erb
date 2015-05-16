@@ -19,9 +19,12 @@
   </br>
   </br>
     <p><a href="/about">About</a></p>
-    <p><a href="/users/sign_in">Login</a></p>
-    <p><a href="/users/sign_up">Signup</a></p>
-    <p><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>
+    <% if !current_user %>
+      <p><a href="/users/sign_in">Login</a></p>
+      <p><a href="/users/sign_up">Signup</a></p>
+    <% else %>
+      <p><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>
+    <% end %>
   </nav>
 </header>
 

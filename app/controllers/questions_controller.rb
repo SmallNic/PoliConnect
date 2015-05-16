@@ -6,12 +6,20 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @response = Response.new
   end
 
   def new
+    @question = Question.new
   end
 
   def create
+    @question = Question.new(question_params)
+    if @question.save!
+      redirect_to(question_path(@question))
+    else
+      render :new
+    end
   end
 
   def edit
@@ -22,4 +30,11 @@ class QuestionsController < ApplicationController
 
   def destroy
   end
+
+  private
+  def question_params
+    return params[:question].permit(:title, :body, :user_id)
+  end
+
+
 end
