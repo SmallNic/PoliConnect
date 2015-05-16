@@ -1,15 +1,4 @@
-<h1>PoliConnect</h1>
-
-<ul>
-  <li><%= link_to "Home", '/' %></li>
-  <li><%= link_to "About", '/about' %></li>
-  <%if !current_user %>
-    <li><%= link_to('Log in', new_user_session_path) %></li>
-    <li><%= link_to('Register', new_user_registration_path)  %></li>
-  <% else %>
-    <li><%= link_to('Sign Out', destroy_user_session_path, :method => :delete)  %></li>
-  <% end %>
-</ul>
-
-<h2>Title:<%= @question.title %></h2>
+<h2><%= @question.title %></h2>
 <p>Body: <%= @question.body %></p>
+
+<%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>

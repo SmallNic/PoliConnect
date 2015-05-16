@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    binding.pry
+    @response = Response.new
   end
 
   def new
@@ -20,8 +20,6 @@ class QuestionsController < ApplicationController
     else
       render :new
     end
-
-    binding.pry
   end
 
   def edit
