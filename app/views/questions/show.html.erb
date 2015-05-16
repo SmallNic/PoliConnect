@@ -1,0 +1,10 @@
+<h1>PoliConnect</h1>
+
+<ul>
+  <li><%= link_to "About", about_path %></li>
+  <li><%= link_to "Log In", new_user_session_path %></li>
+  <li>Register</li>
+</ul>
+
+<h2><%= @question.title %></h2>
+<p><%= @question.body %></p>
