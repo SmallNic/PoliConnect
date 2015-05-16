@@ -1,0 +1,17 @@
+  <div class = "forminfo">
+    <h1>Your Information</h1>
+    <%= form_for @question do |f| %>
+
+      <div class = "spacer">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      </div>
+
+      <div class = "spacer">
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+      </div>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
