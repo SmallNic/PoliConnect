@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.text_field :category, autofocus: true, class:"text-box" %>
+    <%= f.collection_select :category, ["Expert", "Lawmaker"], :to_s, :to_s, :size=>"52" %>
   </div>
 
   <div class="field">
