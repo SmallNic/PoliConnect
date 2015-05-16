@@ -6,25 +6,24 @@
 # #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 # #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-# # category = ("Law Maker", "Policy Maker")
-# #
-# #
-# # #Fake users
-# # 5.times do |i|
-# #
-# #   Faker::Internet.email
-# #   = category.sample(1)
-# #
-# # end
+categories = ["Law Maker", "Policy Maker"]
+
+
+#Fake users
+5.times do |i|
+  email = Faker::Internet.email
+  category = categories.sample(1)
+  User.create(:category => category, :email => email)
+end
 #
 #
 #
 #
-# #Fake Questions
+#Fake Questions
 # 5.times do |i|
 #   title = Faker::Lorem.sentences(1)
 #   body  = Faker::Lorem.paragraph
-#   user_id = user[i].id
+#   user_id = User.find[i].id
 # Question.create(:title => title, :body => body, :user_id => user_id)
 #
 # end
