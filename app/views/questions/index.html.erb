@@ -1,0 +1,12 @@
+<h1>PoliConnect</h1>
+
+<ul>
+  <li>About</li>
+  <li>Log In</li>
+  <li>Register</li>
+</ul>
+
+<% @questions.each do |question| %>
+  <%= question.title %>
+  <%= question.body %>
+<% end %>
