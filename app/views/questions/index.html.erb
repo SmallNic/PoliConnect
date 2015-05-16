@@ -5,3 +5,8 @@
   <li>Log In</li>
   <li>Register</li>
 </ul>
+
+<% @questions.each do |question| %>
+  <%= question.title %>
+  <%= question.body %>
+<% end %>
