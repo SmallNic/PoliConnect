@@ -1,2 +1,6 @@
-Hi
+<h1>User Show Page</h1>
+
+
+<% if current_user %>
 <%= link_to 'Signout', destroy_user_session_path, :method => :delete %>
+<% end %>

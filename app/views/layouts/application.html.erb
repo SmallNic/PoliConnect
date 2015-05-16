@@ -5,8 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+<header>
+  <h1>PoliConnect</h1>
+</br>
+</br>
+  <nav>
+    <p>Connecting Policy Makers and Experts</p>
+  </br>
+  </br>
+    <p><a href="/about">About</a></p>
+    <p><a href="/users/sign_in">Login</a></p>
+    <p><a href="/users/sign_up">Signup</a></p>
+    <p><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>
+  </nav>
+</header>
 
 <%= yield %>
 
