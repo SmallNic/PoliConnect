@@ -14,25 +14,31 @@
  *= require_self
  */
 
-body{
+html, body{
   padding:2%;
+  background-color:rgb(254, 254, 207);
 }
 
 header{
   margin-bottom:5%;
   font-family: 'Anonymous Pro';
 }
+
 header p{
   float:left;
   text-align:center;
   font-size:1.4em;
 }
 
+h1 a:hover, p a:hover{
+  text-decoration:none;
+}
+
 header h1{
   text-align:center;
   font-size:4em;
   line-height:10%;
-  margin-left:1.5%;
+  margin-left:5%;
   margin-bottom:-1%;
 }
 
@@ -42,4 +48,8 @@ p{
 
 nav{
   margin-left:36%;
+}
+
+.container{
+  width:60%;
 }
