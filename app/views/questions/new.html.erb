@@ -1,7 +1,6 @@
 <div class="container">
   <div class = "forminfo">
-    <h1>Your Information</h1>
-  </br>
+    <h1>Add a Question</h1>
   </br>
     <%= form_for @question do |f| %>
 
@@ -11,6 +10,9 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
       </div>
+
+    </br>
+    </br>
 
       <div class = "spacer">
       <%= f.label :body %>
