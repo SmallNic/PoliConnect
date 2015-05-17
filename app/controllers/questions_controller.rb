@@ -26,18 +26,15 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-<<<<<<< HEAD
     authorize! :edit, @quesiton
   end
 
   def update
     authorize! :edit, @quesiton
-=======
     @question = Question.find(params[:id])
   end
 
   def update
->>>>>>> 78781b79407dad5c13542c1867d82ccd336c0df7
 
   end
 
