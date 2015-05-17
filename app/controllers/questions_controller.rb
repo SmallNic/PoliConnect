@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @tags = Tag.all
   end
 
   def show
@@ -32,6 +33,7 @@ class QuestionsController < ApplicationController
     authorize! :edit, @quesiton
     @question = Question.find(params[:id])
   end
+
 
 
   def destroy

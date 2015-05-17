@@ -14,7 +14,7 @@
 <p><%= @question.body %></p>
 <h3>Tags:</h3>
 <% @question.tags.each do |tag| %>
-  <p><%= link_to tag.name, tag_path(tag) %></p>
+  <%= link_to tag.name, tag_path(tag) %>
 <% end %>
 <br /><br />
 
@@ -25,4 +25,4 @@
   Response: <%= response.body %>
 <% end %>
 
-<p><%= link_to("Respond to Question", new_question_response_path(@question, @response)) %></p>
+<p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
