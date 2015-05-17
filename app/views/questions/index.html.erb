@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="top-question">
     <h1>Latest Question</h1>
     <p>Q: <% @questions.last %></br>
@@ -8,15 +7,14 @@
 
   <div class="other-questions">
     <% @questions.each do |question| %>
+<<<<<<< HEAD
       <!-- <h3><#%= link_to(question.title, question_path)%></h3> -->
+=======
+      <h3><%= link_to(question.title, question_path(question))%></h3>
+>>>>>>> 78781b79407dad5c13542c1867d82ccd336c0df7
       <p><%= question.body %></p>
     <% end %>
   </div>
 </div>
-
-<% @questions.each do |question| %>
-  <h3><%= link_to(question.title, question_path(question))%></h3>
-  <p><%= question.body %></p>
-<% end %>
 
 <%= link_to("Ask a Question", new_question_path) %>

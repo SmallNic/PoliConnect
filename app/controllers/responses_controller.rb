@@ -8,6 +8,7 @@ class ResponsesController < ApplicationController
   end
 
   def new
+<<<<<<< HEAD
     @response = Question.new
     authorize! :create, @response
   end
@@ -21,6 +22,19 @@ class ResponsesController < ApplicationController
       render :new
     end
 
+=======
+    @question = Question.find(params[:question_id])
+    @response = Response.new
+  end
+
+  def create
+    @response = Response.new(response_params)
+    if @response.save!
+      redirect_to(question_path(@response.question))
+    else
+      render :new
+    end
+>>>>>>> 78781b79407dad5c13542c1867d82ccd336c0df7
   end
 
   def edit
@@ -36,7 +50,7 @@ class ResponsesController < ApplicationController
 
   private
   def response_params
-    return params[:response].permit(:title, :body, :user_id)
+    return params[:response].permit(:body, :question_id, :user_id)
   end
 
 
