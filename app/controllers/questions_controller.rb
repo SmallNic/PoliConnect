@@ -11,6 +11,9 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @regionalTags = ["North America", "Latin America", "Sub-Saharan Africa", "Middle East/North Africa", "Europe", "Asia", "Oceania"]
+    @policyTags = ["Security/Defense", "Economics", "Health", "Environment","Science and Technology"]
+    @tag = Tag.new
   end
 
   def create

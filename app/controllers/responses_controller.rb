@@ -1,4 +1,4 @@
-class ResponseController < ApplicationController
+class ResponsesController < ApplicationController
 
   def index
     @responses = Response.all
@@ -8,19 +8,17 @@ class ResponseController < ApplicationController
   end
 
   def new
-    @response = Question.new
+    @question = Question.find(params[:question_id])
+    @response = Response.new
   end
 
   def create
-    @response = Response.new(question_params)
-    if @question.save!
-      redirect_to(question_path(@question))
+    @response = Response.new(response_params)
+    if @response.save!
+      redirect_to(question_path(@response.question))
     else
       render :new
     end
-
-    binding.pry
-
   end
 
   def edit
@@ -34,7 +32,7 @@ class ResponseController < ApplicationController
 
   private
   def response_params
-    return params[:response].permit(:title, :body, :user_id)
+    return params[:response].permit(:body, :question_id, :user_id)
   end
 
 
