@@ -44,10 +44,15 @@ header h1{
 
 p{
   padding-left: 5%;
+  font-size:1.4em;
 }
 
 nav{
   margin-left:36%;
+}
+
+body h2, body h3, body h1{
+  font-family: 'Anonymous Pro';
 }
 
 .container{
@@ -59,4 +64,27 @@ nav{
   width:60%;
   margin-top:2%;
   margin-bottom:2%;
+}
+
+.top-question{
+  height:20%;
+  background:red;
+  border:blue;
+  border-radius:50px;
+  padding:1%;
+  border-weight:40px;
+  border-style:solid;
+  color:white;
+}
+
+.top-question h1{
+  font-size:3.5em;
+}
+
+.other-questions a{
+  color:green;
+}
+
+.other-questions p{
+  color:purple;
 }
