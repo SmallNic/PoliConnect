@@ -14,3 +14,10 @@
 </div>
 
 <%= link_to("Ask a Question", new_question_path) %>
+
+<div style="border:1px solid black; margin-top:20px;">
+Tag Box:
+<% @tags.uniq.each do |tag| %>
+  <%= link_to tag.name, tag_path(tag) %>
+<% end %>
+</div>
