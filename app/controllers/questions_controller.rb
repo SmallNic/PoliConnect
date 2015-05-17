@@ -34,9 +34,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  def update
 
-  end
 
   def destroy
   end
