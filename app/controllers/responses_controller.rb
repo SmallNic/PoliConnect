@@ -8,7 +8,9 @@ class ResponsesController < ApplicationController
   end
 
   def new
-    @response = Question.new
+    # binding.pry
+    @question = Question.find(params[:question_id])
+    @response = Response.new
     authorize! :create, @response
   end
 
@@ -24,6 +26,7 @@ class ResponsesController < ApplicationController
   end
 
   def edit
+
     authorize! :update, @response
   end
 

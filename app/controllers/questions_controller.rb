@@ -33,6 +33,10 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     authorize! :update, @question
+    @question.update(question_params)
+    @question.save
+    redirect_to(question_path(@question))
+
   end
 
   def destroy
