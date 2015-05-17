@@ -4,8 +4,8 @@
     <div class="container">
   </div>
 </div><div class="container">
-<h2><%= @question.title %></h2>
-<p>Body: <%= @question.body %></p>
+<h2>"<%= @question.title %>"</h2>
+<p><%= @question.body %></p>
 
 <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
 
