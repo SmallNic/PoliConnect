@@ -11,10 +11,12 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    authorize! :create, @question
   end
 
   def create
     @question = Question.new(question_params)
+    authorize! :create, @question
     if @question.save!
       redirect_to(question_path(@question))
     else
@@ -23,9 +25,12 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @quesiton
   end
 
   def update
+    authorize! :edit, @quesiton
+
   end
 
   def destroy

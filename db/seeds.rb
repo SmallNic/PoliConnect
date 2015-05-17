@@ -34,10 +34,7 @@ end
 #Fake Questions
 5.times do |i|
   i = 1
-  title = Faker::Lorem.sentences(1)
-  body  = Faker::Lorem.paragraph
-  user_id = User.find(i)
-Question.create!(:title => title, :body => body, :user_id => user_id)
+Question.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user_id: User.find(i))
 end
 
 
