@@ -26,17 +26,19 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    authorize! :edit, @quesiton
+    @question = Question.find(params[:id])
+    authorize! :update, @question
   end
 
   def update
-    authorize! :edit, @quesiton
     @question = Question.find(params[:id])
+    authorize! :update, @question
+    @question.update!
   end
 
-
-
   def destroy
+    @question = Question.find(params[:id])
+    redirect_to(questions_path)
   end
 
   private

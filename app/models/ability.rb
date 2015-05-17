@@ -11,9 +11,9 @@ class Ability
     #only .gov and .edu
 
     #
-    if user
-      can :new, Question
-    end
+    # if user
+    #   can :new, Question
+    # end
 
     if user
       can :create, Question
@@ -22,14 +22,17 @@ class Ability
     #   user
     # end
 
-    can [:update,  :edit, :destroy], Question do |q|
-      q.user_id == user.id
+    # binding.pry
+
+    can [:update, :destroy], Question do |q|
+       user_string = user.id.to_s
+      q.user_id == user_string
     end
 
     # binding.pry
-    if user
-      can :new, Response
-    end
+    # if user
+    #   can :new, Response
+    # end
     if user
       can :create, Response
     end
@@ -39,7 +42,8 @@ class Ability
     # end
 
     can [:update, :edit, :destroy], Response do |r|
-      r.user_id == user.id
+      user_string = user.id.to_s
+      r.user_id == user_string
     end
 
   end
