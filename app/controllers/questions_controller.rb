@@ -36,9 +36,7 @@ class QuestionsController < ApplicationController
 
   end
 
-  def update
 
-  end
 
   def destroy
     @question = Question.find(params[:id])
