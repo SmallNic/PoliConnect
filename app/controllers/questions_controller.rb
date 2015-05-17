@@ -11,10 +11,12 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    authorize! :create, @question
   end
 
   def create
     @question = Question.new(question_params)
+    authorize! :create, @question
     if @question.save!
       redirect_to(question_path(@question))
     else
@@ -23,10 +25,18 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+<<<<<<< HEAD
+    authorize! :edit, @quesiton
+  end
+
+  def update
+    authorize! :edit, @quesiton
+=======
     @question = Question.find(params[:id])
   end
 
   def update
+>>>>>>> 78781b79407dad5c13542c1867d82ccd336c0df7
 
   end
 
