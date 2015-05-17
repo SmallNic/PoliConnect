@@ -1,8 +1,8 @@
 <div class="container">
   <div class="top-question">
     <h1>Latest Question</h1>
-    <p>Q: <% @questions.last %></br>
-    <% @questions.last %>
+    <p>Q: <%= @questions.last.title %></br>
+    <%= @questions.last.body %></p>
   </div>
 
   <div class="other-questions">
