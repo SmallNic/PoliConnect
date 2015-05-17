@@ -1,9 +1,20 @@
 
+<div class="container">
+  <div class="container">
+    <div class="container">
+  </div>
+</div><div class="container">
+<h2><%= @question.title %></h2>
+<p>Body: <%= @question.body %></p>
+
+<%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
+
+
 <h2>Question Title:<%= @question.title %></h2>
 <p><%= @question.body %></p>
 <h3>Tags:</h3>
 <% @question.tags.each do |tag| %>
-  <p><%= link_to tag.name, tag_path(tag) %></p>
+  <%= link_to tag.name, tag_path(tag) %>
 <% end %>
 <br /><br />
 
@@ -14,4 +25,4 @@
   Response: <%= response.body %>
 <% end %>
 
-<p><%= link_to("Respond to Question", new_question_response_path(@question, @response)) %></p>
+<p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
