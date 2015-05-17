@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :responses
+    resources :tags, except: [:index, :show]
   end
 
-  resources :tags
-
+  resources :tags, only: [:index, :show]
 end

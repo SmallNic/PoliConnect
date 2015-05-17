@@ -1,6 +1,13 @@
-<<<<<<< HEAD
+
 <h2>Question Title:<%= @question.title %></h2>
 <p><%= @question.body %></p>
+<h3>Tags:</h3>
+<% @question.tags.each do |tag| %>
+  <p><%= link_to tag.name, tag_path(tag) %></p>
+<% end %>
+<br /><br />
+
+<%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
 
 <h3>Responses:</h3>
 <% @question.responses.each do |response| %>
@@ -8,17 +15,3 @@
 <% end %>
 
 <p><%= link_to("Respond to Question", new_question_response_path(@question, @response)) %></p>
-=======
-<<<<<<< HEAD
-<div class="container">
-  <div class="container">
-    <div class="container">
-  </div>
-</div><div class="container">
-=======
-<h2><%= @question.title %></h2>
-<p>Body: <%= @question.body %></p>
-
-<%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
->>>>>>> d6631ce69f104b6bc2bca7bf3768c5bbf6a94145
->>>>>>> 21e7999eef277b39699b21e8331a38f26c9278cb

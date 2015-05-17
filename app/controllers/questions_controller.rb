@@ -11,9 +11,6 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @regionalTags = ["North America", "Latin America", "Sub-Saharan Africa", "Middle East/North Africa", "Europe", "Asia", "Oceania"]
-    @policyTags = ["Security/Defense", "Economics", "Health", "Environment","Science and Technology"]
-    @tag = Tag.new
   end
 
   def create
@@ -26,9 +23,11 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
   end
 
   def update
+
   end
 
   def destroy
