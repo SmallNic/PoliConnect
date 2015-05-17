@@ -1,12 +1,16 @@
 <div class = "container">
   <h2><%= @question.title %></h2>
-  <% if can? :update, @question %>
-    <%= link_to "Edit Question", edit_question_path(@question) %> |
-    <%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>
+  <% if current_user%>
+    <% if can? :update, @question %>
+      <%= link_to "Edit Question", edit_question_path(@question) %> |
+      <%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>
+    <% end %>
   <% end %>
   <p><%= @question.body %></p>
 
-  <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
+  <% if current_user%>
+    <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
+  <% end %>
 
   <h3>Tags:</h3>
   <% @question.tags.each do |tag| %>
@@ -14,16 +18,22 @@
   <% end %>
   <br /><br />
 
-  <%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
+  <% if current_user%>
+    <%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
+  <% end %>
 
   <h3>Responses:</h3>
   <% @question.responses.each do |response| %>
     Response: <%= response.body %>
-    <% if can? :update, @response %>
-    <%= link_to "Edit Response", edit_question_response_path(@question, response) %> |
-    <%= link_to "Delete Response", question_response_path(@question), method: :delete, class: "deleteResponse" %>
+    <% if current_user%>
+      <% if can? :update, @response %>
+        <%= link_to "Edit Response", edit_question_response_path(@question, response) %> |
+        <%= link_to "Delete Response", question_response_path(@question), method: :delete, class: "deleteResponse" %>
+      <% end %>
     <% end %>
   <% end %>
 
-  <p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
+  <% if current_user%>
+    <p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
+  <% end %>
 </div>
