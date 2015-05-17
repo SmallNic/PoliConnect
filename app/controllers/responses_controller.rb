@@ -1,4 +1,4 @@
-class ResponseController < ApplicationController
+class ResponsesController < ApplicationController
 
   def index
     @responses = Response.all
@@ -9,24 +9,22 @@ class ResponseController < ApplicationController
 
   def new
     @response = Question.new
-    authorize! :create, @question
+    authorize! :create, @response
   end
 
   def create
     @response = Response.new(question_params)
-    authorize! :create, @question
+    authorize! :create, @response
     if @question.save!
       redirect_to(question_path(@question))
     else
       render :new
     end
 
-    binding.pry
-
   end
 
   def edit
-    authorize! :update, @question
+    authorize! :update, @response
   end
 
   def update

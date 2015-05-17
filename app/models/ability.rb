@@ -3,18 +3,42 @@ class Ability
 
   def initialize(user)
 
-    can :read, About Questions
+    can :read, :all
+
+    # can :read, Questions
 
     #can only login if they are a law maker or policy experts, anyone else
     #only .gov and .edu
 
+    #
+    if user
+      can :new, Question
+    end
 
+    if user
+      can :create, Question
+    end
+    # can [:create, :new], Question do |q|
+    #   user
+    # end
 
-    can [:update, :destroy], Question do |q|
+    can [:update,  :edit, :destroy], Question do |q|
       q.user_id == user.id
     end
 
-    can [:update, :destroy], Response do |r|
+    # binding.pry
+    if user
+      can :new, Response
+    end
+    if user
+      can :create, Response
+    end
+
+    # can [:create, :new], Response do |r|
+    #   user
+    # end
+
+    can [:update, :edit, :destroy], Response do |r|
       r.user_id == user.id
     end
 
@@ -45,5 +69,5 @@ class Ability
   #
   # See the wiki for details:
   # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-end
+
 end

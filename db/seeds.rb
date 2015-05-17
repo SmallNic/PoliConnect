@@ -18,6 +18,7 @@ counter = 0
 
   email = Faker::Internet.email
   category = categories.sample
+
   newUser= User.create!(
   category: category,
   email: email,
