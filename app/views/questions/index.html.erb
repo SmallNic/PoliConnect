@@ -1,3 +1,19 @@
+<div class="container">
+
+  <div class="top-question">
+    <h1>Latest Question</h1>
+    <p>Q: <% @questions.last %></br>
+    <% @questions.last %>
+  </div>
+
+  <div class="other-questions">
+    <% @questions.each do |question| %>
+      <h3><%= link_to(question.title, question_path)%></h3>
+      <p><%= question.body %></p>
+    <% end %>
+  </div>
+</div>
+
 <% @questions.each do |question| %>
   <h3><%= link_to(question.title, question_path(question))%></h3>
   <p><%= question.body %></p>
