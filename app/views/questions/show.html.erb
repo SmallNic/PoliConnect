@@ -1,24 +1,26 @@
 
-<h2><%= @question.title %></h2>
-<%= link_to "Edit Question", edit_question_path(@question) %> |
-<%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>
-<p><%= @question.body %></p>
+<div class="container">
+  <h2><%= @question.title %></h2>
+  <%= link_to "Edit Question", edit_question_path(@question) %> |
+  <%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>
+</br></br>
+  <p><%= @question.body %></p>
 
-<%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
+  <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
 
+  </br>
+  </br>
+  <h3>Tags:</h3>
+  <% @question.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
 
+  <%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
 
-<h3>Tags:</h3>
-<% @question.tags.each do |tag| %>
-  <%= link_to tag.name, tag_path(tag) %>
-<% end %>
-<br /><br />
+  <h3>Responses:</h3>
+  <% @question.responses.each do |response| %>
+    Response: <%= response.body %>
+  <% end %>
 
-<%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
-
-<h3>Responses:</h3>
-<% @question.responses.each do |response| %>
-  Response: <%= response.body %>
-<% end %>
-
-<p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
+  <p><%= link_to("Contribute Response", new_question_response_path(@question, @response)) %></p>
+</div>
