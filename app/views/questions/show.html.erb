@@ -1,17 +1,13 @@
 
-<div class="container">
-  <div class="container">
-    <div class="container">
-  </div>
-</div><div class="container">
 <h2><%= @question.title %></h2>
-<p>Body: <%= @question.body %></p>
+<%= link_to "Edit Question", edit_question_path(@question) %> |
+<%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>
+<p><%= @question.body %></p>
 
 <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>
 
 
-<h2>Question Title:<%= @question.title %></h2>
-<p><%= @question.body %></p>
+
 <h3>Tags:</h3>
 <% @question.tags.each do |tag| %>
   <%= link_to tag.name, tag_path(tag) %>
