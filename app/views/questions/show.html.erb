@@ -1,8 +1,10 @@
+<<<<<<< HEAD
 <h2><%= @question.title %></h2>
 <% if can? :update, @question %>
   (<%= link_to "Edit Question", edit_question_path(@question) %> |
   <%= link_to "Delete Question", question_path(@question), method: :delete, class: "deleteQuestion" %>)
 <% end %>
+
 <p><%= @question.body %></p>
 
 <%= link_to("Respond to Question", new_question_response_path(@question, @response)) %>

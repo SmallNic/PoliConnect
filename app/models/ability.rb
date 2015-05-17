@@ -22,8 +22,11 @@ class Ability
     #   user
     # end
 
+    # binding.pry
+
     can [:update, :destroy], Question do |q|
-      q.user_id == user.id
+       user_string = user.id.to_s
+      q.user_id == user_string
     end
 
     # binding.pry
@@ -39,7 +42,8 @@ class Ability
     # end
 
     can [:update, :edit, :destroy], Response do |r|
-      r.user_id == user.id
+      user_string = user.id.to_s
+      r.user_id == user_string
     end
 
   end
