@@ -1,0 +1,25 @@
+<div class="container">
+  <div class = "forminfo">
+    <h1>Edit Question</h1>
+  </br>
+    <%= form_for @question do |f| %>
+
+      <%= f.hidden_field :user_id, {value:current_user.id} %>
+
+      <div class = "spacer">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      </div>
+
+    </br>
+    </br>
+
+      <div class = "spacer">
+      <%= f.label :body %>
+      <%= f.text_area :body, :size=>"52x6" %>
+      </div>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

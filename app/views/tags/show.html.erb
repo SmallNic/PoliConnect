@@ -1,0 +1,11 @@
+
+  <h2>All questions tagged: <em><%= @tag.name %></em></h2>
+
+  <% @tags.each do |tag| %>
+    <% if tag.name == @tag.name %>
+    <div class="other-questions">
+      <h3><%= @questions.find(tag.question_id).title %></h3><br>
+      <p><%= @questions.find(tag.question_id).body %></p>
+    </div>
+    <% end %>
+  <% end %>
