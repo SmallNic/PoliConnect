@@ -33,28 +33,28 @@ end
 
 
 #Fake Questions
-5.times do |i|
-  i = 1
-Question.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user_id: User.find(i))
-end
+#5.times do |i|
+#  i = 1
+#Question.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, user_id: User.find(i))
+#end
 
 
 #Fake Responses
-5.times do |i|
-  i = 1
-  body = Faker::Lorem.paragraph
-  user_id = User.find(i).id
-  question_id = Question.find(i).id
-  Response.create!(body: body, user_id: user_id, question_id: question_id)
-end
+#5.times do |i|
+#  i = 1
+#  body = Faker::Lorem.paragraph
+#  user_id = User.find(i).id
+#  question_id = Question.find(i).id
+#  Response.create!(body: body, user_id: user_id, question_id: question_id)
+#end
 
 
 #Fake Tag
-5.times do |i|
-  name = Faker::Lorem.word
-  question_id = Question.find(1).id
-  Tag.create!(name: name, question_id: question_id)
-end
+#5.times do |i|
+#  name = Faker::Lorem.word
+#  question_id = Question.find(1).id
+#  Tag.create!(name: name, question_id: question_id)
+#end
 
 question1 = Question.create({title:"Extremist organizations and funding", body:"How does Somali extremist organization al-Shabaab get its funding?"})
 
