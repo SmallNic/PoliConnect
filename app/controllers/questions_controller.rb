@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.all.sort { |a,b| a.score <=> b.score}
     @tags = Tag.all
   end
 
@@ -43,6 +43,20 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to(questions_path)
   end
+
+  def upvote
+    @question = Question.find(params[:id])
+    @question.upvote_by current_user
+    redirect_to(questions_path)
+  end
+
+  def downvote
+    @question = Question.find(params[:id])
+    @question.downvote_by current_user
+    redirect_to(questions_path)
+  end
+
+
 
   private
   def question_params
