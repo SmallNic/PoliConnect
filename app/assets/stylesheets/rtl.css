@@ -8,7 +8,7 @@ design by: 2code
 url: www.2code.info
 */
 /* Basic Styles  */
-@import url("css/bootstrap.min-ar.css");
+@import url("bootstrap.min-ar.css");
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 body,.qoute p,input,.button,label,.more,blockquote,.widget ul li,textarea,h1, h2, h3, h4, h5, h6,select {
 	font-family: "Droid Arabic Kufi","Open Sans", Arial, sans-serif;
@@ -109,7 +109,7 @@ blockquote {
 }
 .two_fourth {
 	margin-right: 0;
-	margin-left: 2%; 
+	margin-left: 2%;
 }
 .three_fourth {
 	margin-right: 0;
@@ -1054,11 +1054,11 @@ ul.login-links {
 	margin-left: 10px;
 	margin-right: 0;
 }
-h1 [class^="icons-"], h1 [class*=" icons-"], 
-h2 [class^="icons-"], h2 [class*=" icons-"], 
-h3 [class^="icons-"], h3 [class*=" icons-"], 
-h4 [class^="icons-"], h4 [class*=" icons-"], 
-h5 [class^="icons-"], h5 [class*=" icons-"], 
+h1 [class^="icons-"], h1 [class*=" icons-"],
+h2 [class^="icons-"], h2 [class*=" icons-"],
+h3 [class^="icons-"], h3 [class*=" icons-"],
+h4 [class^="icons-"], h4 [class*=" icons-"],
+h5 [class^="icons-"], h5 [class*=" icons-"],
 h6 [class^="icons-"], h6 [class*=" icons-"] {
 	margin-left: 12px;
 	margin-right: 0;
@@ -1519,7 +1519,7 @@ a.carousel-next {
 	}
 }
 /*------------------------------------------------------------------------------*/
-/*                    width : 991px 
+/*                    width : 991px
 /*------------------------------------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 991px) {
 	.crumbs {
@@ -1531,7 +1531,7 @@ a.carousel-next {
 	}
 }
 /*------------------------------------------------------------------------------*/
-/*                    width : 767px 
+/*                    width : 767px
 /*------------------------------------------------------------------------------*/
 @media (max-width: 767px) {
 	/* Widgets */
@@ -1651,7 +1651,7 @@ a.carousel-next {
 	}
 }
 /*------------------------------------------------------------------------------*/
-/*                    width : 479px 
+/*                    width : 479px
 /*------------------------------------------------------------------------------*/
 @media only screen and (max-width: 479px) {
 	.ask-me .col-md-9 .publish-question {
