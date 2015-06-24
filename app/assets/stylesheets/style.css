@@ -178,7 +178,7 @@ body {
 }
 /* header-top */
 #header-top {
-	height: 42px;
+	/*height: 42px;*/
 }
 .header-top-nav li {
 	float: left;
