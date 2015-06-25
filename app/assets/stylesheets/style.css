@@ -253,7 +253,8 @@ div[class*="slider_shadow"]:before, div[class^="header_shadow"] {
 }
 /* navigation */
 .navigation {
-	float: right;
+	float: left;
+	margin-left: 23%;
 }
 .navigation > ul li {
 	float: left;
