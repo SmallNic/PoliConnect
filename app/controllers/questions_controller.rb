@@ -11,11 +11,14 @@ class QuestionsController < ApplicationController
     @response = Response.new
     @questions = Question.all
     @responses = Response.all
+    @tag = Tag.new
   end
 
   def new
     @question = Question.new
     authorize! :create, @question
+    @questions = Question.all
+    @responses = Response.all
   end
 
   def create

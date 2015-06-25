@@ -94,3 +94,9 @@ body h2, body h3, body h1{
 .other-questions p{
   color:purple;
 }*/
+
+
+.add-tag>input {
+  margin:0;
+  padding:0;
+}
