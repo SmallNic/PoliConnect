@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body{
+/*html, body{
   padding:2%;
   background-color:rgb(254, 254, 207);
 }
@@ -93,4 +93,4 @@ body h2, body h3, body h1{
 
 .other-questions p{
   color:purple;
-}
+}*/

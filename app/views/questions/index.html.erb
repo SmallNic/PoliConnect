@@ -1,30 +1,71 @@
-<div class="container">
-  <div class="top-question">
-    <h1>Latest Question</h1>
+<div class="row">
+  <div class="col-md-9">
+    <div class="tabs-warp question-tab">
+      <ul class="tabs">
+        <li class="tab"><a href="#" class="current">Recent Questions</a></li>
+        <li class="tab"><a href="#">Most Responses</a></li>
+        <li class="tab"><a href="#">Recently Answered</a></li>
+        <li class="tab"><a href="#">No answers</a></li>
+      </ul>
+      <div class="tab-inner-warp">
 
-      <p>Q: <%= link_to(@questions.last.title, question_path(@questions.last)) %></br>
-        <%= @questions.last.body %></p>
-    </div>
+        <div class="tab-inner">
 
-      <div class="other-questions">
-        <% @questions.reverse.each do |question| %>
-        <!-- <h3><#%= link_to(question.title, question_path)%></h3> -->
-        <h3><%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg"), like_question_path(question), method: :put %><%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg"), dislike_question_path(question), method: :put %> (<%= question.score %>) <%= link_to(question.title, question_path(question))%></h3>
-        <p><%= question.body %></p>
-        <% end %>
+          <% @questions.reverse.each do |question| %>
+
+            <article class="question question-type-normal">
+              <h2>
+                <a href="single_question.html"><%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg"), like_question_path(question), method: :put %><%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg"), dislike_question_path(question), method: :put %> (<%= question.score %>) <%= link_to(question.title, question_path(question))%></a>
+              </h2>
+              <a class="question-report" href="#">Report</a>
+              <div class="question-type-main"><i class="icon-question-sign"></i>Question</div>
+              <div class="question-author">
+                <a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="http://placehold.it/60x60/FFF/444"></a>
+              </div>
+              <div class="question-inner">
+                <div class="clearfix"></div>
+                <p class="question-desc"><%= question.body %></p>
+                <div class="question-details">
+                  <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
+                  <span class="question-favorite"><i class="icon-star"></i>5</span>
+                </div>
+                <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
+                <span class="question-date"><i class="icon-time"></i>4 mins ago</span>
+                <span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
+                <span class="question-view"><i class="icon-user"></i>70 views</span>
+                <div class="clearfix"></div>
+              </div>
+            </article>
+
+          <% end %>
+          <!-- Use the followiing code for a "poll" question -->
+          <!-- <article class="question question-type-poll">
+            <h2>
+              <a href="single_question_poll.html">This Is My Second Poll Question</a>
+            </h2>
+            <a class="question-report" href="#">Report</a>
+            <div class="question-type-main"><i class="icon-signal"></i>Poll</div>
+            <div class="question-author">
+              <a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="http://placehold.it/60x60/FFF/444"></a>
+            </div>
+            <div class="question-inner">
+              <div class="clearfix"></div>
+              <p class="question-desc">Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae velit in neque dictum blandit.</p>
+              <div class="question-details">
+                <span class="question-favorite"><i class="icon-star"></i>5</span>
+              </div>
+              <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
+              <span class="question-date"><i class="icon-time"></i>4 mins ago</span>
+              <span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
+              <span class="question-view"><i class="icon-user"></i>70 views</span>
+              <div class="clearfix"></div>
+            </div>
+          </article> -->
+
+          <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+
+        </div>
       </div>
-    </div>
 
-    <% if current_user %>
-    <%= link_to("Ask a Question", new_question_path) %>
-    <% end %>
-
-  </div>
-
-  <hr>
-  <h2>Tags:</h2>
-  <% @tags.uniq.each do |tag| %>
-  <div style="border:1px solid black; margin:5px; display:inline-block; padding:5px; border-radius:3px; background:#f2f2f2;">
-    <%= link_to tag.name, tag_path(tag) %>
-  </div>
-  <% end %>
+    </div><!-- End page-content -->
+  </div><!-- End main -->
