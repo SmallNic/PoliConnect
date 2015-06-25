@@ -2361,7 +2361,7 @@ span.date i,span.comment i {
 }
 /* sidebar position */
 .page-left-sidebar .sidebar {
-	float: left;
+	float: right;
 }
 .page-left-sidebar > .row > .col-md-9 {
 	float: right;
