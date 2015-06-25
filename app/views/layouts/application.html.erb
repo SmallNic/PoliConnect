@@ -157,7 +157,7 @@
 		<section class="container clearfix">
 			<nav class="header-top-nav">
 				<ul>
-					<li><a href="contact_us.html"><i class="icon-envelope"></i>Contact</a></li>
+					<li><a href="#copyright"><i class="icon-envelope"></i>Contact</a></li>
 					<li><a href="#"><i class="icon-headphones"></i>Support</a></li>
             <% if user_signed_in? %>
               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -503,7 +503,6 @@
 		</section><!-- End container -->
 	</footer><!-- End footer-bottom -->
 </div><!-- End wrap -->
-
 <div class="go-up"><i class="icon-chevron-up"></i></div>
 
 <!-- js -->
@@ -516,5 +515,6 @@
 
 
 
+<a name="copyright"></a>
 </body>
 </html>
