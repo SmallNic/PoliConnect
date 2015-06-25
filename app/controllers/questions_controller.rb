@@ -3,11 +3,14 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all.sort { |a,b| a.score <=> b.score}
     @tags = Tag.all
+    @responses = Response.all
   end
 
   def show
     @question = Question.find(params[:id])
     @response = Response.new
+    @questions = Question.all
+    @responses = Response.all
   end
 
   def new
