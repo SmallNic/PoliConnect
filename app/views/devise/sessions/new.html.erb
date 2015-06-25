@@ -9,8 +9,8 @@
             <div class="form-inputs clearfix">
 
               <p class="login-text">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, onfocus: "if (this.value == 'Username') {this.value = '';}", onblur: "if (this.value == '') {this.value = 'Username';}"%>
+                <%#= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true%>
                 <i class="icon-user"></i>
               </p>
 

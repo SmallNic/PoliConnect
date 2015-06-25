@@ -3,11 +3,14 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @tags = Tag.all
+    @responses = Response.all
   end
 
   def show
     @question = Question.find(params[:id])
     @response = Response.new
+    @questions = Question.all
+    @responses = Response.all
   end
 
   def new
@@ -43,6 +46,8 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to(questions_path)
   end
+
+
 
   private
   def question_params

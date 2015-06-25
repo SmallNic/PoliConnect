@@ -67,13 +67,11 @@
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 								<div class="form-inputs clearfix">
 									<p class="login-text">
-                    <%= f.label :email %><br />
                     <%= f.email_field :email, autofocus: true, onfocus: "if (this.value == 'Username') {this.value = '';}", onblur: "if (this.value == '') {this.value = 'Username';}"%>
 										<!-- <input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}"> -->
 										<i class="icon-user"></i>
 									</p>
 									<p class="login-password">
-                    <%= f.label :password %><br />
                     <%= f.password_field :password, autocomplete: "off", onfocus:"if (this.value == 'Password') {this.value = '';}", onblur: "if (this.value == '') {this.value = 'Password';}"%>
 										<i class="icon-lock"></i>
 										<a href="#">Forget</a>
@@ -95,7 +93,7 @@
 				<div class="col-md-6">
 					<div class="page-content Register">
 						<h2>Register Now</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi adipiscing gravdio, sit amet suscipit risus ultrices eu. Fusce viverra neque at purus laoreet consequa. Vivamus vulputate posuere nisl quis consequat.</p>
+						<p>Join the conversation.</p>
 						<a class="button color small signup">Create an account</a>
 					</div><!-- End page-content -->
 				</div><!-- End col-md-6 -->
@@ -161,7 +159,11 @@
 				<ul>
 					<li><a href="contact_us.html"><i class="icon-envelope"></i>Contact</a></li>
 					<li><a href="#"><i class="icon-headphones"></i>Support</a></li>
-					<li><a href="/users/sign_in" id="login-panel"><i class="icon-user"></i>Login Area</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            <% else %>
+              <li><a href="/users/sign_in" id="login-panel"><i class="icon-user"></i>Login Area</a></li>
+            <% end %>
 				</ul>
 			</nav>
 			<div class="header-search">
@@ -174,7 +176,7 @@
 	</div><!-- End header-top -->
 	<header id="header">
 		<section class="container clearfix">
-			<div class="logo"><a href="index.html"><%= image_tag("logo.png") %></a></div>
+			<div class="logo"><a href="index.html"><%= image_tag("PoliConnect.png", size: "220x80") %></a></div>
 			<nav class="navigation">
 				<ul>
 					<li class="current_page_item"><a href="index.html">Home</a>
@@ -252,8 +254,13 @@
 			<div class="box_icon box_warp box_no_border box_no_background" box_border="transparent" box_background="transparent" box_color="#FFF">
 				<div class="row">
 					<div class="col-md-3">
-						<h2>Welcome to PoliConnect</h2>
-						<p>Lawmakers and policy experts need a space to connect quickly, easily, and anonymously. PoliConnect makes that possible.</p>
+            <div class="row">
+              <h2>Welcome to PoliConnect</h2>
+  						<!-- <div class="poli-welcome" style="float:left; display:inline-block; width:55%;"><h2 style="display:inline;">Welcome to PoliConnect</h2></div> -->
+              <!-- <div class="poli-icon" style="float:left; display:inline-block;"><%= image_tag("poli_icon.png", size: "60x60") %></div> -->
+  		        <!-- <div style="clear:both;"></div> -->
+            </div>
+            <p>Lawmakers and policy experts need a space to connect quickly, easily, and anonymously. PoliConnect makes that possible.</p>
 						<div class="clearfix"></div>
 						<a class="color button dark_button medium" href="/about">About Us</a>
 						<a class="color button dark_button medium" href="#">Join Now</a>
@@ -281,8 +288,8 @@
 					<h3 class="widget_title">Stats</h3>
 					<div class="ul_list ul_list-icon-ok">
 						<ul>
-							<li><i class="icon-question-sign"></i>Questions ( <span>20</span> )</li>
-							<li><i class="icon-comment"></i>Answers ( <span>50</span> )</li>
+							<li><i class="icon-question-sign"></i>Questions ( <span><%= @questions.length %></span> )</li>
+							<li><i class="icon-comment"></i>Answers ( <span><%= @responses.length %></span> )</li>
 						</ul>
 					</div>
 				</div>
