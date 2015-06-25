@@ -16,38 +16,38 @@
         <div class="clearfix"></div>
         <div class="question-desc">
           <p><%= @question.body %></p>
-          <p>  <h4>Tags:</h4>
-            <% @question.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag) %>
-            <% end %>
+          <!-- <p>
             <% if current_user%>
               <%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
             <% end %>
-          </p>
+          </p> -->
         </div>
         <div class="question-details">
-          <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
-          <span class="question-favorite"><i class="icon-star"></i>5</span>
+          <!-- <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span> -->
+          <!-- <span class="question-favorite"><i class="icon-star"></i>5</span> -->
         </div>
-        <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
-        <span class="question-date"><i class="icon-time"></i>4 mins ago</span>
-        <span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
-        <span class="question-view"><i class="icon-user"></i>70 views</span>
-        <span class="single-question-vote-result">+22</span>
+        <!-- <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span> -->
+        <span class="question-date"><i class="icon-time"></i>Posted: <%= @question.created_at.strftime("%A, %d %b %Y %l:%M %p")  %></span>
+        <span class="question-comment"><a href="#"><i class="icon-comment"></i><%= @question.responses.length %> Answer</a></span>
+        <!-- <span class="question-view"><i class="icon-user"></i>70 views</span> -->
+        <span class="single-question-vote-result"><%= "%+d" % @question.score %></span>
         <ul class="single-question-vote">
-          <li><a href="#" class="single-question-vote-down" title="Dislike"><i class="icon-thumbs-down"></i></a></li>
-          <li><a href="#" class="single-question-vote-up" title="Like"><i class="icon-thumbs-up"></i></a></li>
+          <!-- <li><a href="#" class="single-question-vote-down" title="Dislike"><i class="icon-thumbs-down"></i></a></li> -->
+          <li><%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg", title:"Like", style:"inline"), like_question_path(@question), method: :put, class:"single-question-vote-up" %></li>
+          <!-- <li><a href="#" class="single-question-vote-up" title="Like"><i class="icon-thumbs-up"></i></a></li> -->
+          <li><%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg", title:"Dislike", style:"inline"), dislike_question_path(@question), method: :put, class:"single-question-vote-down" %></li>
         </ul>
         <div class="clearfix"></div>
       </div>
     </article>
-    <h3>Vote question Up or Down: <%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg"), like_question_path(@question), method: :put %><%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg"), dislike_question_path(@question), method: :put %> </h3>
-    <h4>Current score: (<%= @question.score %>)</h4>
 
-
+    <!--  Try setting bottom margin of share-tags to smaller than 30px in style.css file -->
     <div class="share-tags page-content">
-      <div class="question-tags"><i class="icon-tags"></i>
-        <a href="#">wordpress</a>, <a href="#">question</a>, <a href="#">developer</a>
+      <div class="question-tags"><i class="icon-tags">Tags:</i>
+        <% @question.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+
       </div>
       <div class="share-inside-warp">
         <ul>
@@ -131,7 +131,7 @@
     </div> End related-posts -->
 
     <div id="commentlist" class="page-content">
-      <div class="boxedtitle page-title"><h2>Answers ( <span class="color">5</span> )</h2></div>
+      <div class="boxedtitle page-title"><h2>Answers ( <span class="color"><%= @question.responses.length %></span> )</h2></div>
       <ol class="commentlist clearfix">
 
 
