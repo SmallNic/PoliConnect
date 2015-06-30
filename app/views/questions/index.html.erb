@@ -1,42 +1,19 @@
 <div class="row">
   <div class="col-md-9">
+
     <div class="tabs-warp question-tab">
       <ul class="tabs">
-        <li class="tab"><a href="#" class="current">Recent Questions</a></li>
-        <li class="tab"><a href="#">Most Responses</a></li>
-        <li class="tab"><a href="#">Recently Answered</a></li>
-        <li class="tab"><a href="#">No answers</a></li>
+        <li class="tab"><a href="#recent-questions" class="current">Recent Questions</a></li>
+        <li class="tab"><a href="#most-responses">Most Responses</a></li>
+        <li class="tab"><a href="#recently-answered">Recently Answered</a></li>
+        <li class="tab"><a href="#no-answers">No answers</a></li>
       </ul>
+
+      <div id="recent-questions">
       <div class="tab-inner-warp">
-
         <div class="tab-inner">
-
           <% @questions.reverse.each do |question| %>
-
-            <article class="question question-type-normal">
-              <h2>
-                <a href="single_question.html"><%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg"), like_question_path(question), method: :put %><%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg"), dislike_question_path(question), method: :put %> (<%= question.score %>) <%= link_to(question.title, question_path(question))%></a>
-              </h2>
-              <a class="question-report" href="#">Report</a>
-              <div class="question-type-main"><i class="icon-question-sign"></i>Question</div>
-              <div class="question-author">
-                <a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="http://placehold.it/60x60/FFF/444"></a>
-              </div>
-              <div class="question-inner">
-                <div class="clearfix"></div>
-                <p class="question-desc"><%= question.body %></p>
-                <div class="question-details">
-                  <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
-                  <span class="question-favorite"><i class="icon-star"></i>5</span>
-                </div>
-                <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
-                <span class="question-date"><i class="icon-time"></i>4 mins ago</span>
-                <span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
-                <span class="question-view"><i class="icon-user"></i>70 views</span>
-                <div class="clearfix"></div>
-              </div>
-            </article>
-
+              <%= render partial: "index", locals: {question: question} %>
           <% end %>
           <!-- Use the followiing code for a "poll" question -->
           <!-- <article class="question question-type-poll">
@@ -67,5 +44,47 @@
         </div>
       </div>
 
+
+    </div><!-- End tab navigation -->
+
+    <div id="most-responses">
+      <div class="tab-inner-warp">
+        <div class="tab-inner">
+          <% @questions.each do |question| %>
+              <%= render partial: "index", locals: {question: question} %>
+          <% end %>
+          <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+
+        </div>
+      </div>
+    </div><!-- End recent-questions tab -->
+
+      <div id="recently-answered">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions_recent_answered.each do |question| %>
+                <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+          </div>
+        </div>
+      </div><!-- End recently-answered tab -->
+
+      <div id="no-answers">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions.each do |question| %>
+                <% if question.responses.length == 0 %>
+                    <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+          </div>
+        </div>
+      </div><!-- End no-answers tab -->
+
+
     </div><!-- End page-content -->
+    </div><!-- End page-content -->
+
   </div><!-- End main -->
