@@ -71,505 +71,487 @@
 
             <div class="form-style form-style-3">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                  <div class="form-inputs clearfix">
-                    <p class="login-text">
-                      <%= f.email_field :email, autofocus: true, onfocus: "if (this.value == 'Username') {this.value = '';}", onblur: "if (this.value == '') {this.value = 'Username';}" %>
-                      <!-- <input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}"> -->
-                      <i class="icon-user"></i>
-                    </p>
+								<div class="form-inputs clearfix">
+									<p class="login-text">
+                    <%= f.email_field :email, autofocus: true, placeholder:"Email"%>
+										<!-- <input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}"> -->
+										<i class="icon-user"></i>
+									</p>
+									<p class="login-password">
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "Password"%>
+										<i class="icon-lock"></i>
+										<a href="#">Forget</a>
+									</p>
+								</div>
+								<p class="form-submit login-submit">
+                  <%= f.submit "Log in", class: "button color small login-submit submit" %>
+								</p>
+								<div class="rememberme">
+                  <% if devise_mapping.rememberable? -%>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  <% end %>
+								</div>
+							<% end %>
+						</div>
+					</div><!-- End page-content -->
+				</div><!-- End col-md-6 -->
+				<div class="col-md-6">
+					<div class="page-content Register">
+						<h2>Register Now</h2>
+						<p>Join the conversation.</p>
+						<a class="button color small signup">Create an account</a>
+					</div><!-- End page-content -->
+				</div><!-- End col-md-6 -->
+			</div>
+		</section>
+	</div><!-- End login-panel -->
 
-                    <p class="login-password">
-                      <%= f.password_field :password, autocomplete: "off", onfocus: "if (this.value == 'Password') {this.value = '';}", onblur: "if (this.value == '') {this.value = 'Password';}" %>
-                      <i class="icon-lock"></i>
-                      <a href="#">Forget</a>
-                    </p>
-                  </div>
-                  <p class="form-submit login-submit">
-                    <%= f.submit "Log in", class: "button color small login-submit submit" %>
-                  </p>
+	<div class="panel-pop" id="signup">
+		<h2>Register Now<i class="icon-remove"></i></h2>
+		<div class="form-style form-style-3">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+				<div class="form-inputs clearfix">
+					<p>
+						<label class="required">Category<span>*</span></label>
+            <%= f.collection_select :category, ["Expert", "Lawmaker"], :to_s, :to_s, :size=>"52" %>
+					</p>
+					<p>
+						<label class="required">E-Mail<span>*</span></label>
+            <%= f.email_field :email %>
+					</p>
+					<p>
+						<label class="required">Password<span>*</span></label>
+            <%= f.password_field :password, autocomplete: "off" %>
+					</p>
+					<p>
+						<label class="required">Confirm Password<span>*</span></label>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+					</p>
+				</div>
+				<p class="form-submit">
+          <%= f.submit "Sign up", class:"button color small submit" %>
+				</p>
+			<% end %>
+		</div>
+	</div><!-- End signup -->
 
-                  <div class="rememberme">
-                    <% if devise_mapping.rememberable? -%>
-                        <%= f.check_box :remember_me %>
-                        <%= f.label :remember_me %>
-                    <% end %>
-                  </div>
-              <% end %>
-            </div>
-          </div>
-          <!-- End page-content -->
-        </div>
-        <!-- End col-md-6 -->
-        <div class="col-md-6">
-          <div class="page-content Register">
-            <h2>Register Now</h2>
+	<div class="panel-pop" id="lost-password">
+		<h2>Lost Password<i class="icon-remove"></i></h2>
+		<div class="form-style form-style-3">
+			<p>Lost your password? Please enter your username and email address. You will receive a link to create a new password via email.</p>
+			<form>
+				<div class="form-inputs clearfix">
+					<p>
+						<label class="required">Username<span>*</span></label>
+						<input type="text">
+					</p>
+					<p>
+						<label class="required">E-Mail<span>*</span></label>
+						<input type="email">
+					</p>
+				</div>
+				<p class="form-submit">
+					<input type="submit" value="Reset" class="button color small submit">
+				</p>
+			</form>
+			<div class="clearfix"></div>
+		</div>
+	</div><!-- End lost-password -->
 
-            <p>Join the conversation.</p>
-            <a class="button color small signup">Create an account</a>
-          </div>
-          <!-- End page-content -->
-        </div>
-        <!-- End col-md-6 -->
-      </div>
-    </section>
-  </div>
-  <!-- End login-panel -->
-
-  <div class="panel-pop" id="signup">
-    <h2>Register Now<i class="icon-remove"></i></h2>
-
-    <div class="form-style form-style-3">
-      <form>
-        <div class="form-inputs clearfix">
-          <p>
-            <label class="required">Username<span>*</span></label>
-            <input type="text">
-          </p>
-
-          <p>
-            <label class="required">E-Mail<span>*</span></label>
-            <input type="email">
-          </p>
-
-          <p>
-            <label class="required">Password<span>*</span></label>
-            <input type="password" value="">
-          </p>
-
-          <p>
-            <label class="required">Confirm Password<span>*</span></label>
-            <input type="password" value="">
-          </p>
-        </div>
-        <p class="form-submit">
-          <input type="submit" value="Signup" class="button color small submit">
-        </p>
-      </form>
-    </div>
-  </div>
-  <!-- End signup -->
-
-  <div class="panel-pop" id="lost-password">
-    <h2>Lost Password<i class="icon-remove"></i></h2>
-
-    <div class="form-style form-style-3">
-      <p>Lost your password? Please enter your username and email address. You will receive a link to create a new
-        password via email.</p>
-
-      <form>
-        <div class="form-inputs clearfix">
-          <p>
-            <label class="required">Username<span>*</span></label>
-            <input type="text">
-          </p>
-
-          <p>
-            <label class="required">E-Mail<span>*</span></label>
-            <input type="email">
-          </p>
-        </div>
-        <p class="form-submit">
-          <input type="submit" value="Reset" class="button color small submit">
-        </p>
-      </form>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-  <!-- End lost-password -->
-
-  <div id="header-top">
-    <section class="container clearfix">
-      <nav class="header-top-nav">
-        <ul>
-          <li><a href="#copyright"><i class="icon-envelope"></i>Contact</a></li>
-          <li><a href="#"><i class="icon-headphones"></i>Support</a></li>
-          <% if user_signed_in? %>
+	<div id="header-top">
+		<section class="container clearfix">
+			<nav class="header-top-nav">
+				<ul>
+					<li><a href="#copyright"><i class="icon-envelope"></i>Contact</a></li>
+					<li><a href="#"><i class="icon-headphones"></i>Support</a></li>
+            <% if user_signed_in? %>
               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            <% else %>
+              <li><a href="/users/sign_in" class="login-panel-load"><i class="icon-user"></i>Login Area</a></li>
+            <% end %>
+				</ul>
+			</nav>
+			<div class="header-search">
+				<form>
+				    <input type="text" value="Search here ..." onfocus="if(this.value=='Search here ...')this.value='';" onblur="if(this.value=='')this.value='Search here ...';">
+				    <button type="submit" class="search-submit"></button>
+				</form>
+			</div>
+		</section><!-- End container -->
+	</div><!-- End header-top -->
+	<header id="header">
+		<section class="container clearfix">
+			<div class="logo"><a href="/"><%= image_tag("PoliConnect.png", size: "220x80") %></a></div>
+			<nav class="navigation">
+				<ul>
+					<!-- 	<ul>
+					  <li class="current_page_item"><a href="index.html">Home</a></li>
+					  <li><a href="index_2.html">Home 2</a></li>
+					  <li><a href="index_boxed_1.html">Home Boxed 1</a></li>
+					  <li><a href="index_boxed_2.html">Home Boxed 2</a></li>
+					  <li><a href="index_no_box.html">Home No Box</a></li>
+					</ul> -->
+					</li>
+          <% if current_user %>
+            <li class="current_page_item"><a href="/">Home</a>
+            <li class="ask_question"><a href="/questions/new">Ask Question</a></li>
+            <li><a href="cat_question.html">Questions</a>
+              <ul>
+                <li><a href="cat_question.html">Questions Category</a></li>
+                <li><a href="single_question.html">Question Single</a></li>
+                <li><a href="single_question_poll.html">Poll Question Single</a></li>
+              </ul>
+            </li>
+            <li><a href="user_profile.html">User</a>
+              <ul>
+                <li><a href="user_profile.html">User Profile</a></li>
+                <li><a href="user_questions.html">User Questions</a></li>
+                <li><a href="user_answers.html">User Answers</a></li>
+                <li><a href="user_favorite_questions.html">User Favorite Questions</a></li>
+                <li><a href="user_points.html">User Points</a></li>
+                <li><a href="edit_profile.html">Edit Profile</a></li>
+              </ul>
+            </li>
+            <li><a href="contact_us.html">Contact Us</a></li>
           <% else %>
-              <li><a href="/users/sign_in" id="login-panel"><i class="icon-user"></i>Login Area</a></li>
-          <% end %>
-        </ul>
-      </nav>
-      <div class="header-search">
-        <form>
-          <input type="text" value="Search here ..." onfocus="if(this.value=='Search here ...')this.value='';" onblur="if(this.value=='')this.value='Search here ...';">
-          <button type="submit" class="search-submit"></button>
-        </form>
-      </div>
-    </section>
-    <!-- End container -->
-  </div>
-  <!-- End header-top -->
-  <header id="header">
-    <section class="container clearfix">
-      <div class="logo"><a href="/"><%= image_tag("PoliConnect.png", size: "220x80") %></a></div>
-      <nav class="navigation">
-        <ul>
-          <li class="current_page_item"><a href="/">Home</a>
-            <!-- 	<ul>
-              <li class="current_page_item"><a href="index.html">Home</a></li>
-              <li><a href="index_2.html">Home 2</a></li>
-              <li><a href="index_boxed_1.html">Home Boxed 1</a></li>
-              <li><a href="index_boxed_2.html">Home Boxed 2</a></li>
-              <li><a href="index_no_box.html">Home No Box</a></li>
-            </ul> -->
-          </li>
-          <li class="ask_question"><a href="/questions/new">Ask Question</a></li>
-          <li><a href="cat_question.html">Questions</a>
-            <ul>
-              <li><a href="cat_question.html">Questions Category</a></li>
-              <li><a href="single_question.html">Question Single</a></li>
-              <li><a href="single_question_poll.html">Poll Question Single</a></li>
-            </ul>
-          </li>
-          <li><a href="user_profile.html">User</a>
-            <ul>
-              <li><a href="user_profile.html">User Profile</a></li>
-              <li><a href="user_questions.html">User Questions</a></li>
-              <li><a href="user_answers.html">User Answers</a></li>
-              <li><a href="user_favorite_questions.html">User Favorite Questions</a></li>
-              <li><a href="user_points.html">User Points</a></li>
-              <li><a href="edit_profile.html">Edit Profile</a></li>
-            </ul>
-          </li>
-          <!-- <li><a href="blog_1.html">Blog</a>
-            <ul>
-              <li><a href="blog_1.html">Blog 1</a>
-                <ul>
-                  <li><a href="blog_1.html">Right sidebar</a></li>
-                  <li><a href="blog_1_l_sidebar.html">Left sidebar</a></li>
-                  <li><a href="blog_1_full_width.html">Full Width</a></li>
-                </ul>
-              </li>
-              <li><a href="blog_2.html">Blog 2</a>
-                <ul>
-                  <li><a href="blog_2.html">Right sidebar</a></li>
-                  <li><a href="blog_2_l_sidebar.html">Left sidebar</a></li>
-                  <li><a href="blog_2_full_width.html">Full Width</a></li>
-                </ul>
-              </li>
-              <li><a href="single_post.html">Post Single</a>
-                <ul>
-                  <li><a href="single_post.html">Right sidebar</a></li>
-                  <li><a href="single_post_l_sidebar.html">Left sidebar</a></li>
-                  <li><a href="single_post_full_width.html">Full Width</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li> -->
-          <!-- 	<li><a href="right_sidebar.html">Pages</a>
-            <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="contact_us.html">Contact Us</a></li>
-              <li><a href="ask_question.html">Ask Question</a></li>
-              <li><a href="right_sidebar.html">Right Sidebar</a></li>
-              <li><a href="left_sidebar.html">Left Sidebar</a></li>
-              <li><a href="full_width.html">Full Width</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li><a href="shortcodes.html">Shortcodes</a></li> -->
-          <li><a href="contact_us.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </section>
-    <!-- End container -->
-  </header>
-  <!-- End header -->
+            <li class="current_page_item"><a href="/">Home</a>
+            <li><a href="/users/sign_in" class="login-panel-load">Ask Question</a></li>
+            <li><a href="cat_question.html">Questions</a>
+              <ul>
+                <li><a href="cat_question.html">Questions Category</a></li>
+                <li><a href="single_question.html">Question Single</a></li>
+                <!-- <li><a href="single_question_poll.html">Poll Question Single</a></li> -->
+              </ul>
+            </li>
+            <li><a href="/users/sign_in" class="login-panel-load">User</a>
+              <ul>
+                <li><a href="/users/sign_in" class="login-panel-load">User Profile</a></li>
+                <li><a href="/users/sign_in" class="login-panel-load">User Questions</a></li>
+                <li><a href="/users/sign_in" class="login-panel-load">User Answers</a></li>
+                <!-- <li><a href="/users/sign_in" class="login-panel-load">User Favorite Questions</a></li>
+                <li><a href="/users/sign_in" class="login-panel-load">User Points</a></li> -->
+                <li><a href="/users/sign_in" class="login-panel-load">Edit Profile</a></li>
+              </ul>
+            </li>
+            <li><a href="contact_us.html">Contact Us</a></li>
 
-  <div class="section-warp ask-me">
-    <div class="container clearfix">
-      <div class="box_icon box_warp box_no_border box_no_background" box_border="transparent" box_background="transparent" box_color="#FFF">
-        <div class="row">
-          <div class="col-md-3">
+          <% end %>
+
+					<!-- <li><a href="blog_1.html">Blog</a>
+					  <ul>
+					    <li><a href="blog_1.html">Blog 1</a>
+					      <ul>
+					        <li><a href="blog_1.html">Right sidebar</a></li>
+					        <li><a href="blog_1_l_sidebar.html">Left sidebar</a></li>
+					        <li><a href="blog_1_full_width.html">Full Width</a></li>
+					      </ul>
+					    </li>
+					    <li><a href="blog_2.html">Blog 2</a>
+					      <ul>
+					        <li><a href="blog_2.html">Right sidebar</a></li>
+					        <li><a href="blog_2_l_sidebar.html">Left sidebar</a></li>
+					        <li><a href="blog_2_full_width.html">Full Width</a></li>
+					      </ul>
+					    </li>
+					    <li><a href="single_post.html">Post Single</a>
+					      <ul>
+					        <li><a href="single_post.html">Right sidebar</a></li>
+					        <li><a href="single_post_l_sidebar.html">Left sidebar</a></li>
+					        <li><a href="single_post_full_width.html">Full Width</a></li>
+					      </ul>
+					    </li>
+					  </ul>
+					</li> -->
+				<!-- 	<li><a href="right_sidebar.html">Pages</a>
+				  <ul>
+				    <li><a href="login.html">Login</a></li>
+				    <li><a href="contact_us.html">Contact Us</a></li>
+				    <li><a href="ask_question.html">Ask Question</a></li>
+				    <li><a href="right_sidebar.html">Right Sidebar</a></li>
+				    <li><a href="left_sidebar.html">Left Sidebar</a></li>
+				    <li><a href="full_width.html">Full Width</a></li>
+				    <li><a href="404.html">404</a></li>
+				  </ul>
+				</li>
+				<li><a href="shortcodes.html">Shortcodes</a></li> -->
+				</ul>
+			</nav>
+		</section><!-- End container -->
+	</header><!-- End header -->
+
+	<div class="section-warp ask-me">
+		<div class="container clearfix">
+			<div class="box_icon box_warp box_no_border box_no_background" box_border="transparent" box_background="transparent" box_color="#FFF">
+				<div class="row">
+					<div class="col-md-3">
             <div class="row">
               <h2>Welcome to PoliConnect</h2>
               <!-- <div class="poli-welcome" style="float:left; display:inline-block; width:55%;"><h2 style="display:inline;">Welcome to PoliConnect</h2></div> -->
               <!-- <div class="poli-icon" style="float:left; display:inline-block;"><%= image_tag("poli_icon.png", size: "60x60") %></div> -->
               <!-- <div style="clear:both;"></div> -->
             </div>
-            <p>Lawmakers and policy experts need a space to connect quickly, easily, and anonymously. PoliConnect makes
-              that possible.</p>
+            <p>Lawmakers and policy experts need a space to connect quickly, easily, and anonymously. PoliConnect makes that possible.</p>
+						<div class="clearfix"></div>
+						<div class="welcome_nav">
+              <a class="color button dark_button medium" href="/about">About Us</a>
+              <% if !current_user %>
+					      <a class="color button dark_button medium signup" href="#">Join Now</a>
+              <% end %>
+            </div>
+					</div>
+					<div class="col-md-9">
+						<form class="form-style form-style-2">
+							<p>
+								<textarea rows="4" id="question_title" onfocus="if(this.value=='Ask any question and you be sure find your answer ?')this.value='';" onblur="if(this.value=='')this.value='Ask any question and you be sure find your answer ?';">Ask any question and you be sure find your answer ?</textarea>
+								<i class="icon-pencil"></i>
+								<span class="color button small publish-question">Ask Now</span>
+							</p>
+						</form>
+					</div>
+				</div><!-- End row -->
+			</div><!-- End box_icon -->
+		</div><!-- End container -->
+	</div><!-- End section-warp -->
 
-            <div class="clearfix"></div>
-            <a class="color button dark_button medium" href="/about">About Us</a>
-            <a class="color button dark_button medium" href="#">Join Now</a>
+	<section class="container main-content">
+
+      <%= yield %>
+
+			<aside class="col-md-3 sidebar">
+				<div class="widget widget_stats">
+					<h3 class="widget_title">Stats</h3>
+					<div class="ul_list ul_list-icon-ok">
+						<ul>
+							<li><i class="icon-question-sign"></i>Questions ( <span><%= @questions.length %></span> )</li>
+							<li><i class="icon-comment"></i>Answers ( <span><%= @responses.length %></span> )</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="widget widget_social">
+					<h3 class="widget_title">Find Us</h3>
+					<ul>
+						<li class="rss-subscribers">
+							<a href="#" target="_blank">
+							<strong>
+								<i class="icon-rss"></i>
+								<span>Subscribe</span><br>
+								<small>To RSS Feed</small>
+							</strong>
+							</a>
+						</li>
+						<li class="facebook-fans">
+							<a href="#" target="_blank">
+							<strong>
+								<i class="social_icon-facebook"></i>
+								<span>5,000</span><br>
+								<small>People like it</small>
+							</strong>
+							</a>
+						</li>
+						<li class="twitter-followers">
+							<a href="#" target="_blank">
+							<strong>
+								<i class="social_icon-twitter"></i>
+								<span>3,000</span><br>
+								<small>Followers</small>
+							</strong>
+							</a>
+						</li>
+						<li class="youtube-subs">
+							<a href="#" target="_blank">
+							<strong>
+								<i class="icon-play"></i>
+								<span>1,000</span><br>
+								<small>Subscribers</small>
+							</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+        <% if !current_user %>
+				<div class="widget widget_login">
+					<h3 class="widget_title">Login</h3>
+					<div class="form-style form-style-2">
+						<form>
+							<div class="form-inputs clearfix">
+								<p class="login-text">
+									<input type="text" placeholder="Email">
+									<i class="icon-user"></i>
+								</p>
+								<p class="login-password">
+									<input type="password" placeholder="Password">
+									<i class="icon-lock"></i>
+									<a href="#">Forget</a>
+								</p>
+							</div>
+							<p class="form-submit login-submit">
+								<input type="submit" value="Log in" class="button color small login-submit submit">
+							</p>
+							<div class="rememberme">
+								<label><input type="checkbox" checked="checked"> Remember Me</label>
+							</div>
+						</form>
+						<ul class="login-links login-links-r">
+							<li><a href="#">Register</a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+        <% end %>
+
+				<div class="widget widget_highest_points">
+					<h3 class="widget_title">Most Upvotes</h3>
+					<ul>
+						<li>
+							<div class="author-img">
+								<a href="#"><img width="60" height="60" src="http://www.fillmurray.com/200/300" alt=""></a>
+							</div>
+							<h6><a href="#">admin</a></h6>
+							<span class="comment">12 Points</span>
+						</li>
+						<li>
+							<div class="author-img">
+								<a href="#"><img width="60" height="60" src="http://www.placecage.com/200/300" alt=""></a>
+							</div>
+							<h6><a href="#">vbegy</a></h6>
+							<span class="comment">10 Points</span>
+						</li>
+						<li>
+							<div class="author-img">
+								<a href="#"><img width="60" height="60" src="http://www.fillmurray.com/200/300" alt=""></a>
+							</div>
+							<h6><a href="#">ahmed</a></h6>
+							<span class="comment">5 Points</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="widget widget_tag_cloud">
+					<h3 class="widget_title">Tags</h3>
+					<a href="#">projects</a>
+					<a href="#">Portfolio</a>
+					<a href="#">Wordpress</a>
+					<a href="#">Html</a>
+					<a href="#">Css</a>
+					<a href="#">jQuery</a>
+					<a href="#">2code</a>
+					<a href="#">vbegy</a>
+				</div>
+
+
+				<div class="widget">
+					<h3 class="widget_title">Recent Questions</h3>
+					<ul class="related-posts">
+						<li class="related-item">
+							<h3><a href="#">This is my first Question</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<div class="clear"></div><span>Feb 22, 2014</span>
+						</li>
+						<li class="related-item">
+							<h3><a href="#">This Is My Second Poll Question</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<div class="clear"></div><span>Feb 22, 2014</span>
+						</li>
+					</ul>
+				</div>
+
+			</aside><!-- End sidebar -->
+		</div><!-- End row -->
+	</section><!-- End container -->
+
+	<footer id="footer">
+		<section class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="widget widget_contact">
+            <div class="col-md-3">
+  						<h3 class="widget_title">Where We Are ?</h3>
+  						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi adipiscing gravida odio, sit amet suscipit risus ultrices eu.</p>
+            </div>
+            <ul>
+							<li class="col-md-3">
+								<span>Address :</span>
+								Ask Me Network, 33 Street, syada Zeinab, Cairo, Egypt.
+							</li>
+              <div class="col-md-3">
+  							<li>
+  								<span>Support :</span>Support Telephone No : (+2)01111011110
+  							</li>
+  							<li>Support Email Account : info@example.com</li>
+              </div>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="col-md-2">
+					<div class="widget">
+            <div class="col-md-12">
+						<h3 class="widget_title">Quick Links</h3>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="ask_question.html">Ask Question</a></li>
+							<li><a href="/about">About</a></li>
+							<li><a href="cat_question.html">Questions</a></li>
+							<li><a href="user_profile.html">Users</a></li>
+							<!-- <li><a href="blog_1.html">Blog</a></li> -->
+							<!-- <li><a href="right_sidebar.html">Pages</a></li> -->
+							<!-- <li><a href="shortcodes.html">Shortcodes</a></li> -->
+							<li><a href="contact_us.html">Contact Us</a></li>
+							<li><a href="#">FAQs</a></li>
+						</ul>
           </div>
-          <div class="col-md-9">
-            <form class="form-style form-style-2">
-              <p>
-                <textarea rows="4" id="question_title" onfocus="if(this.value=='Ask any question and you be sure find your answer ?')this.value='';" onblur="if(this.value=='')this.value='Ask any question and you be sure find your answer ?';">Ask any question and you be sure find your answer ?</textarea>
-                <i class="icon-pencil"></i>
-                <span class="color button small publish-question">Ask Now</span>
-              </p>
-            </form>
-          </div>
-        </div>
-        <!-- End row -->
-      </div>
-      <!-- End box_icon -->
-    </div>
-    <!-- End container -->
-  </div>
-  <!-- End section-warp -->
+					</div>
+				</div>
 
-  <section class="container main-content">
+				<!-- <div class="col-md-3">
+					<div class="widget">
+						<h3 class="widget_title">Popular Questions</h3>
+						<ul class="related-posts">
+							<li class="related-item">
+								<h3><a href="#">This is my first Question</a></h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+								<div class="clear"></div><span>Feb 22, 2014</span>
+							</li>
+							<li class="related-item">
+								<h3><a href="#">This Is My Second Poll Question</a></h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
+								<div class="clear"></div><span>Feb 22, 2014</span>
+							</li>
+						</ul>
+					</div>
+				</div> -->
 
-    <%= yield %>
-    <aside class="col-md-3 sidebar">
-      <div class="widget widget_stats">
-        <h3 class="widget_title">Stats</h3>
+				<!-- <div class="col-md-3">
+					<div class="widget widget_twitter">
+						<h3 class="widget_title">Latest Tweets</h3>
+						<div class="tweet_1"></div>
+					</div>
+				</div> -->
 
-        <div class="ul_list ul_list-icon-ok">
-          <ul>
-            <li><i class="icon-question-sign"></i>Questions ( <span><%= @questions.length %></span> )</li>
-            <li><i class="icon-comment"></i>Answers ( <span><%= @responses.length %></span> )</li>
-          </ul>
-        </div>
-      </div>
+			</div><!-- End row -->
+		</section><!-- End container -->
+	</footer><!-- End footer -->
+	<footer id="footer-bottom">
+		<section class="container">
+			<div class="copyrights f_left">Copyright 2015  | By Dan Morgan-Russell, Brad Foster, Don McLamb, Liban Hassan, Isa Conteh, Nic Small</div>
+			<div class="social_icons f_right">
+				<ul>
+					<li class="twitter"><a original-title="Twitter" class="tooltip-n" href="#"><i class="social_icon-twitter font17"></i></a></li>
+					<li class="facebook"><a original-title="Facebook" class="tooltip-n" href="#"><i class="social_icon-facebook font17"></i></a></li>
+					<li class="gplus"><a original-title="Google plus" class="tooltip-n" href="#"><i class="social_icon-gplus font17"></i></a></li>
+					<li class="youtube"><a original-title="Youtube" class="tooltip-n" href="#"><i class="social_icon-youtube font17"></i></a></li>
+					<li class="skype"><a original-title="Skype" class="tooltip-n" href="skype:#?call"><i class="social_icon-skype font17"></i></a></li>
+					<li class="flickr"><a original-title="Flickr" class="tooltip-n" href="#"><i class="social_icon-flickr font17"></i></a></li>
+					<li class="rss"><a original-title="Rss" class="tooltip-n" href="#"><i class="social_icon-rss font17"></i></a></li>
+				</ul>
+			</div><!-- End social_icons -->
+		</section><!-- End container -->
+	</footer><!-- End footer-bottom -->
 
-      <div class="widget widget_social">
-        <h3 class="widget_title">Find Us</h3>
-        <ul>
-          <li class="rss-subscribers">
-            <a href="#" target="_blank">
-              <strong>
-                <i class="icon-rss"></i>
-                <span>Subscribe</span><br>
-                <small>To RSS Feed</small>
-              </strong>
-            </a>
-          </li>
-          <li class="facebook-fans">
-            <a href="#" target="_blank">
-              <strong>
-                <i class="social_icon-facebook"></i>
-                <span>5,000</span><br>
-                <small>People like it</small>
-              </strong>
-            </a>
-          </li>
-          <li class="twitter-followers">
-            <a href="#" target="_blank">
-              <strong>
-                <i class="social_icon-twitter"></i>
-                <span>3,000</span><br>
-                <small>Followers</small>
-              </strong>
-            </a>
-          </li>
-          <li class="youtube-subs">
-            <a href="#" target="_blank">
-              <strong>
-                <i class="icon-play"></i>
-                <span>1,000</span><br>
-                <small>Subscribers</small>
-              </strong>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="widget widget_login">
-        <h3 class="widget_title">Login</h3>
-
-        <div class="form-style form-style-2">
-          <form>
-            <div class="form-inputs clearfix">
-              <p class="login-text">
-                <input type="text" value="Username" onfocus="if (this.value == 'Username') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Username';}">
-                <i class="icon-user"></i>
-              </p>
-
-              <p class="login-password">
-                <input type="password" value="Password" onfocus="if (this.value == 'Password') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Password';}">
-                <i class="icon-lock"></i>
-                <a href="#">Forget</a>
-              </p>
-            </div>
-            <p class="form-submit login-submit">
-              <input type="submit" value="Log in" class="button color small login-submit submit">
-            </p>
-
-            <div class="rememberme">
-              <label><input type="checkbox" checked="checked"> Remember Me</label>
-            </div>
-          </form>
-          <ul class="login-links login-links-r">
-            <li><a href="#">Register</a></li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-
-      <div class="widget widget_highest_points">
-        <h3 class="widget_title">Most Upvotes</h3>
-        <ul>
-          <li>
-            <div class="author-img">
-              <a href="#"><img width="60" height="60" src="http://www.fillmurray.com/200/300" alt=""></a>
-            </div>
-            <h6><a href="#">admin</a></h6>
-            <span class="comment">12 Points</span>
-          </li>
-          <li>
-            <div class="author-img">
-              <a href="#"><img width="60" height="60" src="http://www.placecage.com/200/300" alt=""></a>
-            </div>
-            <h6><a href="#">vbegy</a></h6>
-            <span class="comment">10 Points</span>
-          </li>
-          <li>
-            <div class="author-img">
-              <a href="#"><img width="60" height="60" src="http://www.fillmurray.com/200/300" alt=""></a>
-            </div>
-            <h6><a href="#">ahmed</a></h6>
-            <span class="comment">5 Points</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="widget widget_tag_cloud">
-        <h3 class="widget_title">Tags</h3>
-        <a href="#">projects</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Wordpress</a>
-        <a href="#">Html</a>
-        <a href="#">Css</a>
-        <a href="#">jQuery</a>
-        <a href="#">2code</a>
-        <a href="#">vbegy</a>
-      </div>
-
-      <div class="widget">
-        <h3 class="widget_title">Recent Questions</h3>
-        <ul class="related-posts">
-          <li class="related-item">
-            <h3><a href="#">This is my first Question</a></h3>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-            <div class="clear"></div>
-            <span>Feb 22, 2014</span>
-          </li>
-          <li class="related-item">
-            <h3><a href="#">This Is My Second Poll Question</a></h3>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-            <div class="clear"></div>
-            <span>Feb 22, 2014</span>
-          </li>
-        </ul>
-      </div>
-
-    </aside>
-    <!-- End sidebar -->
-</div>
-<!-- End row -->
-</section><!-- End container -->
-
-<footer id="footer">
-  <section class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="widget widget_contact">
-          <h3 class="widget_title">Where We Are ?</h3>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi adipiscing gravida odio, sit amet suscipit
-            risus ultrices eu.</p>
-          <ul>
-            <li>
-              <span>Address :</span>
-              Ask Me Network, 33 Street, syada Zeinab, Cairo, Egypt.
-            </li>
-            <li>
-              <span>Support :</span>Support Telephone No : (+2)01111011110
-            </li>
-            <li>Support Email Account : info@example.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="widget">
-          <h3 class="widget_title">Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="ask_question.html">Ask Question</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="cat_question.html">Questions</a></li>
-            <li><a href="user_profile.html">Users</a></li>
-            <li><a href="blog_1.html">Blog</a></li>
-            <li><a href="right_sidebar.html">Pages</a></li>
-            <li><a href="shortcodes.html">Shortcodes</a></li>
-            <li><a href="contact_us.html">Contact Us</a></li>
-            <li><a href="#">FAQs</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget">
-          <h3 class="widget_title">Popular Questions</h3>
-          <ul class="related-posts">
-            <li class="related-item">
-              <h3><a href="#">This is my first Question</a></h3>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
-
-              <div class="clear"></div>
-              <span>Feb 22, 2014</span>
-            </li>
-            <li class="related-item">
-              <h3><a href="#">This Is My Second Poll Question</a></h3>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
-
-              <div class="clear"></div>
-              <span>Feb 22, 2014</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget widget_twitter">
-          <h3 class="widget_title">Latest Tweets</h3>
-
-          <div class="tweet_1"></div>
-        </div>
-      </div>
-    </div>
-    <!-- End row -->
-  </section>
-  <!-- End container -->
-</footer>
-<!-- End footer -->
-<footer id="footer-bottom">
-  <section class="container">
-    <div class="copyrights f_left">Copyright 2014 Ask me | <a href="#">By 2code</a></div>
-    <div class="social_icons f_right">
-      <ul>
-        <li class="twitter">
-          <a original-title="Twitter" class="tooltip-n" href="#"><i class="social_icon-twitter font17"></i></a></li>
-        <li class="facebook">
-          <a original-title="Facebook" class="tooltip-n" href="#"><i class="social_icon-facebook font17"></i></a></li>
-        <li class="gplus">
-          <a original-title="Google plus" class="tooltip-n" href="#"><i class="social_icon-gplus font17"></i></a></li>
-        <li class="youtube">
-          <a original-title="Youtube" class="tooltip-n" href="#"><i class="social_icon-youtube font17"></i></a></li>
-        <li class="skype">
-          <a original-title="Skype" class="tooltip-n" href="skype:#?call"><i class="social_icon-skype font17"></i></a>
-        </li>
-        <li class="flickr">
-          <a original-title="Flickr" class="tooltip-n" href="#"><i class="social_icon-flickr font17"></i></a></li>
-        <li class="rss"><a original-title="Rss" class="tooltip-n" href="#"><i class="social_icon-rss font17"></i></a>
-        </li>
-      </ul>
-    </div>
-    <!-- End social_icons -->
-  </section>
-  <!-- End container -->
-</footer>
-<!-- End footer-bottom -->
 </div><!-- End wrap -->
 <div class="go-up"><i class="icon-chevron-up"></i></div>
 

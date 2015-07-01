@@ -17,6 +17,7 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(response_params)
+    # binding.pry
     authorize! :create, @response
     if @response.save!
       redirect_to(question_path(@response.question))
