@@ -100,3 +100,8 @@ body h2, body h3, body h1{
   margin:0;
   padding:0;
 }
+
+.welcome_nav{
+  margin:0 auto;
+  text-align:center;
+}
