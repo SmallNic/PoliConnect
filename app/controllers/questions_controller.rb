@@ -1,9 +1,15 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all.sort { |a,b| a.score <=> b.score}
-    @tags = Tag.all
-    @responses = Response.all
+
+      @questions= Question.all.sort { |a,b| a.score <=> b.score}
+      @questions_most_responses = @questions.sort { |a,b| b.responses.count <=> a.responses.count }
+      @questions_most_recent = @questions.sort { |a,b| b.created_at <=> a.created_at }
+      @questions_recent_answered = @questions.sort { |a,b| b.responses.sort {|a,b| b.created_at <=> a.created_at} <=> a.responses.sort {|a,b| b.created_at <=> a.created_at} }
+
+      @tags = Tag.all
+      @responses = Response.all
+
   end
 
   def show
