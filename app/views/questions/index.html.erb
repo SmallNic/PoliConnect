@@ -1,30 +1,89 @@
-<div class="container">
-  <div class="top-question">
-    <h1>Latest Question</h1>
+<div class="row">
+  <div class="col-md-9">
 
-      <p>Q: <%= link_to(@questions.last.title, question_path(@questions.last)) %></br>
-        <%= @questions.last.body %></p>
-    </div>
+    <div class="tabs-warp question-tab">
+      <ul class="tabs">
+        <li class="tab"><a href="#recent-questions" class="current">Recent Questions</a></li>
+        <li class="tab"><a href="#most-responses">Most Responses</a></li>
+        <li class="tab"><a href="#recently-answered">Recently Answered</a></li>
+        <li class="tab"><a href="#no-answers">No answers</a></li>
+      </ul>
 
-      <div class="other-questions">
-        <% @questions.reverse.each do |question| %>
-        <!-- <h3><#%= link_to(question.title, question_path)%></h3> -->
-        <h3><%= link_to(question.title, question_path(question))%></h3>
-        <p><%= question.body %></p>
-        <% end %>
+      <div id="recent-questions">
+      <div class="tab-inner-warp">
+        <div class="tab-inner">
+          <% @questions.reverse.each do |question| %>
+              <%= render partial: "index", locals: {question: question} %>
+          <% end %>
+          <!-- Use the followiing code for a "poll" question -->
+          <!-- <article class="question question-type-poll">
+            <h2>
+              <a href="single_question_poll.html">This Is My Second Poll Question</a>
+            </h2>
+            <a class="question-report" href="#">Report</a>
+            <div class="question-type-main"><i class="icon-signal"></i>Poll</div>
+            <div class="question-author">
+              <a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="http://placehold.it/60x60/FFF/444"></a>
+            </div>
+            <div class="question-inner">
+              <div class="clearfix"></div>
+              <p class="question-desc">Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae velit in neque dictum blandit.</p>
+              <div class="question-details">
+                <span class="question-favorite"><i class="icon-star"></i>5</span>
+              </div>
+              <span class="question-category"><a href="#"><i class="icon-folder-close"></i>wordpress</a></span>
+              <span class="question-date"><i class="icon-time"></i>4 mins ago</span>
+              <span class="question-comment"><a href="#"><i class="icon-comment"></i>5 Answer</a></span>
+              <span class="question-view"><i class="icon-user"></i>70 views</span>
+              <div class="clearfix"></div>
+            </div>
+          </article> -->
+
+          <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+
+        </div>
       </div>
-    </div>
 
-    <% if current_user %>
-    <%= link_to("Ask a Question", new_question_path) %>
-    <% end %>
 
-  </div>
+    </div><!-- End tab navigation -->
 
-  <hr>
-  <h2>Tags:</h2>
-  <% @tags.uniq.each do |tag| %>
-  <div style="border:1px solid black; margin:5px; display:inline-block; padding:5px; border-radius:3px; background:#f2f2f2;">
-    <%= link_to tag.name, tag_path(tag) %>
-  </div>
-  <% end %>
+    <div id="most-responses">
+      <div class="tab-inner-warp">
+        <div class="tab-inner">
+          <% @questions.each do |question| %>
+              <%= render partial: "index", locals: {question: question} %>
+          <% end %>
+          <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+
+        </div>
+      </div>
+    </div><!-- End recent-questions tab -->
+
+      <div id="recently-answered">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions_recent_answered.each do |question| %>
+                <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+          </div>
+        </div>
+      </div><!-- End recently-answered tab -->
+
+      <div id="no-answers">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions.each do |question| %>
+                <% if question.responses.length == 0 %>
+                    <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+          </div>
+        </div>
+      </div><!-- End no-answers tab -->
+
+
+    </div><!-- End page-content -->
+
+  </div><!-- End main -->

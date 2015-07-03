@@ -12,4 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: [:index, :show]
+
+  # For use with acts_as_votable
+  resources :questions do
+    member do
+      put "like", to: "questions#upvote"
+      put "dislike", to: "questions#downvote"
+    end
+  end
+
 end

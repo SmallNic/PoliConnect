@@ -14,3 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+//= require jquery.min.js
+//= require jquery-ui-1.10.3.custom.min.js
+//= require jquery.easing.1.3.min.js
+//= require html5.js
+//= require twitter/jquery.tweet.js
+//= require jflickrfeed.min.js
+//= require jquery.inview.min.js
+//= require jquery.tipsy.js
+//= require tabs.js
+//= require jquery.flexslider.js
+//= require jquery.prettyPhoto.js
+//= require jquery.carouFredSel-6.2.1-packed.js
+//= require jquery.scrollTo.js
+//= require jquery.nav.js
+//= require tags.js
+//= require jquery.bxslider.min.js
+//= require custom.js
