@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
     @response = Response.new
     @questions = Question.all
     @responses = Response.all
+    @tags = Tag.all
     @tag = Tag.new
   end
 
@@ -25,6 +26,7 @@ class QuestionsController < ApplicationController
     authorize! :create, @question
     @questions = Question.all
     @responses = Response.all
+    @tags = Tag.all
   end
 
   def create
