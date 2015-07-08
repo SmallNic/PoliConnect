@@ -6,17 +6,16 @@ class QuestionsController < ApplicationController
       @questions_most_responses = @questions.sort { |a,b| b.responses.count <=> a.responses.count }
       @questions_most_recent = @questions.sort { |a,b| b.created_at <=> a.created_at }
       @questions_recent_answered = @questions.sort { |a,b| b.responses.sort {|a,b| b.created_at <=> a.created_at} <=> a.responses.sort {|a,b| b.created_at <=> a.created_at} }
-
       @tags = Tag.all
-      @responses = Response.all
+      # @responses = Response.all
 
   end
 
   def show
     @question = Question.find(params[:id])
     @response = Response.new
-    @questions = Question.all
-    @responses = Response.all
+    # @questions = Question.all
+    # @responses = Response.all
     @tags = Tag.all
     @tag = Tag.new
   end
@@ -69,7 +68,6 @@ class QuestionsController < ApplicationController
     @question.downvote_by current_user
     redirect_to(questions_path)
   end
-
 
 
   private

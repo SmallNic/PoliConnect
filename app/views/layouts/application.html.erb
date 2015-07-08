@@ -331,8 +331,8 @@
 					<h3 class="widget_title">Stats</h3>
 					<div class="ul_list ul_list-icon-ok">
 						<ul>
-							<li><i class="icon-question-sign"></i>Questions ( <span><%= @questions.length %></span> )</li>
-							<li><i class="icon-comment"></i>Answers ( <span><%= @responses.length %></span> )</li>
+							<li><i class="icon-question-sign"></i>Questions ( <span><%= GlobalConstants::ALL_QUESTIONS_COUNT %></span> )</li>
+							<li><i class="icon-comment"></i>Answers ( <span><%= GlobalConstants::ALL_RESPONSES_COUNT %></span> )</li>
 						</ul>
 					</div>
 				</div>
@@ -340,7 +340,7 @@
         <div class="widget widget_tag_cloud">
           <h3 class="widget_title">Tags</h3>
           <% @tags.each do |tag| %>
-            <a href="#"><%= tag.name %></a>
+            <%= link_to(tag.name, tag_path(tag))%>
           <% end %>
         </div>
 
