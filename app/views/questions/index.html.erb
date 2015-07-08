@@ -13,7 +13,7 @@
       <div class="tab-inner-warp">
         <div class="tab-inner">
           <% @questions.reverse.each do |question| %>
-              <%= render partial: "index", locals: {question: question} %>
+            <%= render partial: "index", locals: {question: question} %>
           <% end %>
           <!-- Use the followiing code for a "poll" question -->
           <!-- <article class="question question-type-poll">
