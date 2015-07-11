@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_many :tags
 
   acts_as_votable
+  searchkick
 
   def score
     self.get_upvotes.size - self.get_downvotes.size

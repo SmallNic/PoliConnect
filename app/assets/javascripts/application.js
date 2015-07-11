@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
+//= require ckeditor/init
 //= require_tree .
 
 
@@ -34,3 +36,11 @@
 //= require tags.js
 //= require jquery.bxslider.min.js
 //= require custom.js
+
+$(function() {
+    $("#ques th a, #ques a,#recent-questions th a, #recent-questions a").on("click", function(){
+        $.getScript(this.href);
+        return false;
+    });
+});
+

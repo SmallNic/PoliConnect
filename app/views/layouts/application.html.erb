@@ -175,10 +175,12 @@
 				</ul>
 			</nav>
 			<div class="header-search">
-				<form>
-				    <input type="text" value="Search here ..." onfocus="if(this.value=='Search here ...')this.value='';" onblur="if(this.value=='')this.value='Search here ...';">
-				    <button type="submit" class="search-submit"></button>
-				</form>
+              <%= form_for :question, url: search_path, method: :get do |f| %>
+
+                  <%= text_field_tag :query, params[:query], type: "text", value: "Search here ...", onfocus:"if(this.value=='Search here ...')this.value='';", onblur: "if(this.value=='')this.value='Search here ...';" %>
+                  <button type="submit" class="search-submit"></button>
+
+              <% end %>
 			</div>
 		</section><!-- End container -->
 	</div><!-- End header-top -->

@@ -80,7 +80,7 @@
             <p>
               <label class="required">Details<span>*</span></label>
               <!-- <textarea id="question-details" aria-required="true" cols="58" rows="8"></textarea> -->
-              <%= f.text_area :body, :size=>"58x8", id:"question-details" %>
+              <%= f.cktext_area :body,id: "question-details", :height =>58, :cols => 8, :ckeditor => { :toolbar => 'minimal'} %>
 
               <span class="form-description">Type the description thoroughly and in detail .</span>
             </p>

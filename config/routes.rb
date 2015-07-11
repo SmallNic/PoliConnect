@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/search', to: 'search#search'
+
   root 'questions#index'
   get '/about', to: 'about#index'
   devise_for :users

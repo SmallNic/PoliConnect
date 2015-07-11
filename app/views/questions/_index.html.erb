@@ -10,7 +10,8 @@
               </div> -->
               <div class="question-inner">
                 <div class="clearfix"></div>
-                <p class="question-desc"><%= question.body %></p>
+                <%= raw(question.body) %>
+                <p class="question-desc"></p>
                 <!-- <div class="question-details">
                   <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
                   <span class="question-favorite"><i class="icon-star"></i>5</span>

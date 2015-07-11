@@ -15,7 +15,7 @@
       <div class="question-inner">
         <div class="clearfix"></div>
         <div class="question-desc">
-          <p><%= @question.body %></p>
+          <p><%= raw(@question.body) %></p>
           <!-- <p>
             <% if current_user%>
               <%= link_to "Add tags", new_question_tag_path(@question, @tag) %>
@@ -148,7 +148,9 @@
                               <%= link_to "Delete Response", question_response_path(@question), method: :delete, class: "deleteResponse" %>
                             <% end %>
                           <% end %>
+
                         </div>
+
                         <!-- <div class="comment-vote">
                           <ul class="question-vote">
                             <li><a href="#" class="question-vote-up" title="Like"></a></li>
@@ -161,8 +163,10 @@
                         </div> -->
                         <!-- <a class="comment-reply" href="#"><i class="icon-reply"></i>Reply</a> -->
                       </div>
-                      <div class="text"><p><%= response.body %></p>
+                    <div class="text">
+                      <%= raw(response.body) %>
                       </div>
+
                       <!-- <div class="question-answered question-answered-done"><i class="icon-ok"></i>Best Answer</div> -->
                   </div>
               </div>
@@ -202,7 +206,7 @@
                 <p>
                     <label class="required" for="comment">Comment<span>*</span></label>
                     <!-- <textarea id="comment" name="comment" aria-required="true" cols="58" rows="8"></textarea> -->
-                    <%= f.text_area :body, :size=>"58x8" %>
+                  <%= f.cktext_area :body,:id=>"question-details", :height =>58, :cols => 8, :ckeditor => { :toolbar => 'minimal'} %>
 
                 </p>
             </div>
