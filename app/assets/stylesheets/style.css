@@ -8,7 +8,7 @@ design by: 2code
 url: www.2code.info
 */
 /* Css */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+@import url("http://fonts.googleapis.com/css?family=Lusitana' rel='stylesheet' type='text/css'>");
 @import url("base.css");
 @import url("lists.css");
 @import url("bootstrap.min.css");

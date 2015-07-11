@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get '/search', to: 'search#search'
 
   root 'questions#index'
+
   get '/about', to: 'about#index'
+
   devise_for :users
 
   resources :users
@@ -22,5 +24,7 @@ Rails.application.routes.draw do
       put "dislike", to: "questions#downvote"
     end
   end
+
+  resources :contact_us
 
 end
