@@ -678,14 +678,14 @@ jQuery(document).ready(function($) {
 
 	/* Ask Question */
 
-	jQuery(".publish-question").click(function () {
-		var question_title = jQuery("#question_title").val();
-		jQuery.post("ask_question.html",question_title,function () {
-			window.location.href = "ask_question.html?question_title="+question_title;
-			jQuery("#question-title").val(question_title);
-		})
-		return false;
-	});
+	// jQuery(".publish-question").click(function () {
+	// 	var question_title = jQuery("#question_title").val();
+	// 	jQuery.post("ask_question.html",question_title,function () {
+	// 		window.location.href = "ask_question.html?question_title="+question_title;
+	// 		jQuery("#question-title").val(question_title);
+	// 	})
+	// 	return false;
+	// });
 
 	function getParameterByName(name) {
 	    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -760,22 +760,26 @@ jQuery(document).ready(function($) {
 
 	/* Login panel */
 
-	jQuery(".login-panel-load").click(function () {
-		if (jQuery(this).hasClass("header-top-active")) {
-			jQuery(".login-panel").slideUp(500);
-			jQuery(this).removeClass("header-top-active");
-			jQuery(this).find("i").addClass("icon-user");
-			jQuery(this).find("i").removeClass("icon-remove");
-			console.log("header-top-active")
-		}else {
-			jQuery(".login-panel").slideDown(500);
-			jQuery(this).addClass("header-top-active");
-			jQuery(this).find("i").removeClass("icon-user");
-			jQuery(this).find("i").addClass("icon-remove");
-			console.log("header-top-active NOT")
-		}
-		return false;
-	});
+		jQuery(".login-panel-load").click(function () {
+			console.log("currentUser = ", currentUser)
+			if (jQuery(this).hasClass("header-top-active")) {
+				jQuery(".login-panel").slideUp(500);
+				jQuery(this).removeClass("header-top-active");
+				jQuery(this).find("i").addClass("icon-user");
+				jQuery(this).find("i").removeClass("icon-remove");
+				console.log("header-top-active")
+			}else {
+				if (!currentUser){
+					jQuery(".login-panel").slideDown(500);
+					jQuery(this).addClass("header-top-active");
+					jQuery(this).find("i").removeClass("icon-user");
+					jQuery(this).find("i").addClass("icon-remove");
+					console.log("header-top-active NOT")
+				}
+			}
+			return false;
+		});
+
 
 	/* Signup */
 

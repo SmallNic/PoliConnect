@@ -1,18 +1,17 @@
 
             <article class="question question-type-normal">
               <h2>
-                <a href="single_question.html"><%= link_to image_tag("1434948365_ic_keyboard_arrow_up_48px.svg"), like_question_path(question), method: :put %>
-                  <%= link_to image_tag("1434948582_ic_keyboard_arrow_down_48px.svg"), dislike_question_path(question), method: :put %> (<%= question.score %>)
-                  <%= link_to(question.title, question_path(question))%></a>
+                <a href="single_question.html"> <%= link_to(question.title, question_path(question))%></a>
               </h2>
               <!-- <a class="question-report" href="#">Report</a>
               <div class="question-type-main"><i class="icon-question-sign"></i>Question</div> -->
-              <div class="question-author">
+              <!-- <div class="question-author">
                 <a href="#" original-title="ahmed" class="question-author-img tooltip-n"><span></span><img alt="" src="http://placehold.it/60x60/FFF/444"></a>
-              </div>
+              </div> -->
               <div class="question-inner">
                 <div class="clearfix"></div>
-                <p class="question-desc"><%= question.body %></p>
+                <%= raw(question.body) %>
+                <p class="question-desc"></p>
                 <!-- <div class="question-details">
                   <span class="question-answered question-answered-done"><i class="icon-ok"></i>solved</span>
                   <span class="question-favorite"><i class="icon-star"></i>5</span>
@@ -23,6 +22,7 @@
                     <%= link_to(pluralize(question.responses.length, "response"), question_path(question, anchor: "commentlist"))%>
                   </a></span>
                 <!-- <span class="question-view"><i class="icon-user"></i>70 views</span> -->
+                <span class="question-favorite"><i class="icon-thumbs-up"></i><%= pluralize(question.score, "Vote") %> </span>
                 <div class="question-tags"><i class="icon-tags">Tags:</i>
                   <% question.tags.each do |tag| %>
                     <%= link_to tag.name, tag_path(tag) %>

@@ -6,7 +6,12 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @questions = Question.all
+    tags = Tag.where(name:@tag.name)
+    @questions = []
+    tags.each do |tag|
+      @questions.push(Question.find(tag.id))
+    end
+    @questions_recent_answered = @questions.sort { |a,b| b.responses.sort {|a,b| b.created_at <=> a.created_at} <=> a.responses.sort {|a,b| b.created_at <=> a.created_at} }
     @tags = Tag.all
   end
 

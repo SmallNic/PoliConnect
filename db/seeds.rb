@@ -51,7 +51,7 @@ end
 
 #Fake Tag
 5.times do |i|
-  name = Faker::Lorem.word
+  name = Faker::Lorem.characters(5)
   question_id = Question.find(1).id
   Tag.create!(name: name, question_id: question_id)
 end

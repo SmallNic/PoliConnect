@@ -543,11 +543,13 @@ div[class*="slider_shadow"]:before, div[class^="header_shadow"] {
 	background-color: #373b43 !important;
 }
 .ask-me h2 {
-	font-size: 25px;
+	/*font-size: 25px;*/
+	font-size: 32px;
 	margin-bottom: 30px;
 }
 .ask-me p {
-	font-size: 13px !important;
+	/*font-size: 13px !important;*/
+	font-size: 18px !important;
 	line-height: 22px;
 }
 .ask-me .col-md-12 p {

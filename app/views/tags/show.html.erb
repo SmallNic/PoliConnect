@@ -1,11 +1,77 @@
+<!--
+  <h2>All questions tagged: <em><%#= @tag.name %></em></h2>
 
-  <h2>All questions tagged: <em><%= @tag.name %></em></h2>
-
-  <% @tags.each do |tag| %>
-    <% if tag.name == @tag.name %>
+  <%# @tags.each do |tag| %>
+    <%# if tag.name == @tag.name %>
     <div class="other-questions">
-      <h3><%= @questions.find(tag.question_id).title %></h3><br>
-      <p><%= @questions.find(tag.question_id).body %></p>
+      <h3><%#= @questions.find(tag.question_id).title %></h3><br>
+      <p><%#= @questions.find(tag.question_id).body %></p>
     </div>
-    <% end %>
-  <% end %>
+    <%# end %>
+  <%# end %> -->
+
+  <div class="row">
+    <div class="col-md-9">
+
+      <div class="tabs-warp question-tab">
+        <ul class="tabs">
+          <li class="tab"><a href="#recent-questions" class="current">Recent Questions</a></li>
+          <li class="tab"><a href="#most-responses">Most Responses</a></li>
+          <li class="tab"><a href="#recently-answered">Recently Answered</a></li>
+          <li class="tab"><a href="#no-answers">No answers</a></li>
+        </ul>
+
+        <div id="recent-questions">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions.reverse.each do |question| %>
+              <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+          </div>
+        </div>
+
+
+      </div><!-- End tab navigation -->
+
+      <div id="most-responses">
+        <div class="tab-inner-warp">
+          <div class="tab-inner">
+            <% @questions.each do |question| %>
+                <%= render partial: "index", locals: {question: question} %>
+            <% end %>
+            <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+
+          </div>
+        </div>
+      </div><!-- End recent-questions tab -->
+
+        <div id="recently-answered">
+          <div class="tab-inner-warp">
+            <div class="tab-inner">
+              <% @questions_recent_answered.each do |question| %>
+                  <%= render partial: "index", locals: {question: question} %>
+              <% end %>
+              <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+            </div>
+          </div>
+        </div><!-- End recently-answered tab -->
+
+        <div id="no-answers">
+          <div class="tab-inner-warp">
+            <div class="tab-inner">
+              <% @questions.each do |question| %>
+                  <% if question.responses.length == 0 %>
+                      <%= render partial: "index", locals: {question: question} %>
+              <% end %>
+              <% end %>
+              <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
+            </div>
+          </div>
+        </div><!-- End no-answers tab -->
+
+
+      </div><!-- End page-content -->
+
+    </div><!-- End main -->
+      </div>
