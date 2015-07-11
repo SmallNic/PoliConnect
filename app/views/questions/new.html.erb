@@ -1,26 +1,96 @@
-<div class="container">
-  <div class = "forminfo">
-    <h1>Add a Question</h1>
-  </br>
-    <%= form_for @question do |f| %>
+<div class="row">
+  <div class="col-md-9">
 
-      <%= f.hidden_field :user_id, {value:current_user.id} %>
+    <div class="page-content ask-question">
+      <div class="boxedtitle page-title"><h2>Ask Question</h2></div>
 
-      <div class = "spacer">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque.</p>
+
+      <div class="form-style form-style-3" id="question-submit">
+        <%= form_for @question do |f| %>
+          <div class="form-inputs clearfix">
+            <%= f.hidden_field :user_id, {value:current_user.id} %>
+
+            <p>
+              <label class="required">Question Title<span>*</span></label>
+              <%= f.text_field :title, id:"question-title" %>
+
+              <span class="form-description">Please choose an appropriate title for your question.</span>
+            </p>
+            <p>
+              <label>Tags</label>
+              <!-- In order for the tags form to be submitted when the question form is submitted, look into nested forms:
+              http://railscasts.com/episodes/196-nested-model-form-part-1 -->
+              <input type="text" class="input" name="question_tags" id="question_tags" data-seperator=",">
+              <span class="form-description">Please choose suitable keywords, separated by commas. E.g.: <span class="color">Security , Middle East</span> .</span>
+            </p>
+
+            <!-- Provides a dropbox of preselected categories -->
+            <!-- <p>
+              <label class="required">Category<span>*</span></label>
+              <span class="styled-select">
+                <select>
+                  <option value="">Select a Category</option>
+                  <option value="1">Category 1</option>
+                  <option value="2">Category 2</option>
+                </select>
+              </span>
+              <span class="form-description">Please choose the appropriate section so easily search for your question .</span>
+            </p> -->
+
+            <!-- Provides the option to add checkbox if you want this question to be a poll  -->
+            <!-- <p class="question_poll_p">
+              <label for="question_poll">Poll</label>
+              <input type="checkbox" id="question_poll" value="1" name="question_poll">
+              <span class="question_poll">This question is a poll ?</span>
+              <span class="poll-description">If you want to be doing a poll click here .</span>
+            </p>
+            <div class="clearfix"></div>
+            <div class="poll_options">
+              <p class="form-submit add_poll">
+                <button id="add_poll" type="button" class="button color small submit"><i class="icon-plus"></i>Add Field</button>
+              </p>
+              <ul id="question_poll_item">
+                <li id="poll_li_1">
+                  <div class="poll-li">
+                    <p><input id="ask[1][title]" class="ask" name="ask[1][title]" value="" type="text"></p>
+                    <input id="ask[1][value]" name="ask[1][value]" value="" type="hidden">
+                    <input id="ask[1][id]" name="ask[1][id]" value="1" type="hidden">
+                    <div class="del-poll-li"><i class="icon-remove"></i></div>
+                    <div class="move-poll-li"><i class="icon-fullscreen"></i></div>
+                  </div>
+                </li>
+              </ul>
+              <script> var nextli = 2;</script>
+              <div class="clearfix"></div>
+            </div> -->
+
+            <!-- Provide the option of uploading an attachment -->
+            <!-- <label>Attachment</label>
+            <div class="fileinputs">
+              <input type="file" class="file">
+              <div class="fakefile">
+                <button type="button" class="button small margin_0">Select file</button>
+                <span><i class="icon-arrow-up"></i>Browse</span>
+              </div>
+            </div> -->
+
+          </div>
+          <div id="form-textarea">
+            <p>
+              <label class="required">Details<span>*</span></label>
+              <!-- <textarea id="question-details" aria-required="true" cols="58" rows="8"></textarea> -->
+              <%= f.cktext_area :body,id: "question-details", :height =>58, :cols => 8, :ckeditor => { :toolbar => 'minimal'} %>
+
+              <span class="form-description">Type the description thoroughly and in detail .</span>
+            </p>
+          </div>
+          <p class="form-submit">
+            <!-- <input type="submit" id="publish-question" value="Publish Your Question" class="button color small submit"> -->
+            <%= f.submit "Publish Your Question", id:"publish-qestion", class:"button color small submit" %>
+
+          </p>
+        <% end %>
       </div>
-
-    </br>
-    </br>
-
-      <div class = "spacer">
-      <%= f.label :body %>
-      <%= f.text_area :body, :size=>"52x6" %>
-      </div>
-
-
-      <%= f.submit %>
-    <% end %>
-  </div>
-</div>
+    </div><!-- End page-content -->
+  </div><!-- End main -->

@@ -16,7 +16,7 @@
 
       <div class = "spacer">
       <%= f.label :body %>
-      <%= f.text_area :body, :size=>"52x6" %>
+        <%= f.cktext_area :body, :height => 52, :cols => 6,  :ckeditor => { :toolbar => 'minimal'} %>
       </div>
 
       <%= f.submit %>
