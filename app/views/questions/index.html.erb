@@ -50,7 +50,7 @@
     <div id="most-responses">
       <div class="tab-inner-warp">
         <div class="tab-inner">
-          <% @questions.each do |question| %>
+          <% @questions_most_responses.each do |question| %>
               <%= render partial: "index", locals: {question: question} %>
           <% end %>
           <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Questions</a>
